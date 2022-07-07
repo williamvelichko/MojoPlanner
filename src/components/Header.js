@@ -7,7 +7,7 @@ function Header() {
       <div className="logo">
         <h1>Logo</h1>
       </div>
-      <div className="authentication">
+      <NavBar>
         <h3>
           <Link className="link" to="/Login">
             Login
@@ -16,7 +16,7 @@ function Header() {
             Create Account
           </Link>
         </h3>
-      </div>
+      </NavBar>
     </HeaderMain>
   );
 }
@@ -26,4 +26,11 @@ export default Header;
 const HeaderMain = styled.div`
   display: flex;
   align-items: center;
+  justify-content; space-between;
+`;
+
+const NavBar = styled.div`
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
 `;
