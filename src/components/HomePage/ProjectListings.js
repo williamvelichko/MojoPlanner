@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 function ProjectListings(props) {
   const { projects } = props;
@@ -7,14 +8,15 @@ function ProjectListings(props) {
 
   return (
     <div>
-      <h1>projects</h1>
+      <h1>Projects:</h1>
       {projects.map((pr) => {
         return (
-          pr.project_leader,
-          pr.project_name,
-          pr.project_tasks.map((tsk) => {
-            return tsk.task_name;
-          })
+          <div>
+            <Link to="/singleProject">
+              <h4>{pr.project_name}</h4>
+              {pr.project_leader}
+            </Link>
+          </div>
         );
       })}
     </div>

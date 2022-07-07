@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 function Header() {
   return (
-    <div className="header">
+    <HeaderMain>
       <div className="logo">
         <h1>Logo</h1>
       </div>
@@ -16,8 +17,13 @@ function Header() {
           </Link>
         </h3>
       </div>
-    </div>
+    </HeaderMain>
   );
 }
 
 export default Header;
+
+const HeaderMain = styled.div`
+  display: flex;
+  align-items: center;
+`;
