@@ -3,6 +3,7 @@ const initialState = {
     {
       project_name: "Trip1",
       project_leader: "William",
+      project_id: 1,
 
       project_tasks: [
         {

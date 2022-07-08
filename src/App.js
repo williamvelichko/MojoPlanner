@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import SignUpForm from "./components/forms/SignUpForm";
 import LoginForm from "./components/forms/LoginForm";
 import LandingPage from "./components/landingPage/LandingPage";
+import SingleProject from "./components/HomePage/SingleProject";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <div className="route_container">
         <Switch>
           <Route path="/projectListings" component={ProjectListings} />
+          <Route path={`/singleProject/:id`} component={SingleProject} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/login" component={LoginForm} />
           <Route exact path="/" component={LandingPage} />

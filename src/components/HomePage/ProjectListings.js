@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 function ProjectListings(props) {
   const { projects } = props;
-  console.log(projects);
+  console.log(projects.project_id);
+
+  const onSubmit = {};
 
   return (
     <div>
@@ -12,7 +14,7 @@ function ProjectListings(props) {
       {projects.map((pr) => {
         return (
           <div>
-            <Link to="/singleProject">
+            <Link to={`/singleProject/${pr.project_id}`}>
               <h4>{pr.project_name}</h4>
               {pr.project_leader}
             </Link>
