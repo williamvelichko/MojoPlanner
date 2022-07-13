@@ -6,6 +6,7 @@ import SignUpForm from "./components/forms/SignUpForm";
 import LoginForm from "./components/forms/LoginForm";
 import LandingPage from "./components/landingPage/LandingPage";
 import SingleProject from "./components/HomePage/SingleProject";
+import AddProject from "./components/forms/AddProject";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path={`/singleProject/:id`} component={SingleProject} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/login" component={LoginForm} />
+          <Route path="/addproject" component={AddProject} />
+          <Route path="/landingpage" component={LandingPage} />
           <Route exact path="/" component={LandingPage} />
         </Switch>
       </div>
