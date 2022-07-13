@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function SingleProject(props) {
   const { projects } = props;
@@ -13,13 +13,20 @@ function SingleProject(props) {
       {result.map((pr) => {
         return (
           <div>
-            <h3>{pr.project_name}</h3>
-            <h4>{pr.project_leader}</h4>
+            <div>
+              <h3>{pr.project_name}</h3>
+              <h4>{pr.project_leader}</h4>
+            </div>
+            <div>
+              <Link to="/addtask">Add Task</Link>
+            </div>
             {pr.project_tasks.map((tsk) => {
               return (
                 <div>
                   <h5>{tsk.task_name}</h5>
                   <h5>{tsk.info}</h5>
+                  <button>Edit Task!</button>
+                  <button>Task Finished!</button>
                 </div>
               );
             })}
