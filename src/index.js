@@ -8,9 +8,10 @@ import reducer from "./components/reducer";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-const store = createStore(reducer);
+import thunk from "redux-thunk";
+const store = createStore(reducer, applyMiddleware(thunk));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

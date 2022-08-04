@@ -7,7 +7,9 @@ function Header() {
   return (
     <HeaderMain>
       <Logo>
-        <h1>Logo</h1>
+        <Link className="logo" to="/landingpage">
+          <h1>Logo</h1>
+        </Link>
       </Logo>
       {!isAuthenticated && (
         <NavBar>
@@ -53,13 +55,23 @@ const HeaderMain = styled.div`
   width: 100%;
   justify-content: space-between;
   font-family: Poppins;
-  background-color: #e2e8f0;
+  //background-color: #c7d2fe;
+  background-image: url("https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} 
 `;
 
 const Logo = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 15%;
+  .logo {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 const NavBar = styled.div`
@@ -67,6 +79,14 @@ const NavBar = styled.div`
   align-items: center;
   width: 30%;
   justify-content: space-evenly;
+  button {
+    padding: 10px;
+    background-color: #e2e8f0;
+    border: 1px solid grey;
+  }
+  button:hover {
+    background-color: #f1f5f9;
+  }
   .link1 {
     text-decoration: none;
     font-size: 1rem;

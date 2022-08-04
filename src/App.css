@@ -5,4 +5,14 @@
 body {
   width: 100%;
   margin: 0;
+  /* background-color: #c7d2fe; */
+  background-image: url("https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png");
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+  background-size: cover;
+
+  height: 100%;
+  overflow: hidden;
 }

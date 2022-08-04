@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-
+import axios from "axios";
 function SingleProject(props) {
+  const [result, setResult] = useState([]);
   const { projects } = props;
   const params = useParams();
 
-  const result = projects.filter((pr) => (pr.project_id = params));
-
+  useEffect(() => {
+    axios.get(`http://localhost:4000/api/projects/${params.id}`).then((res) => {
+      setResult(res.data);
+    });
+  }, []);
   return (
     <div>
       {result.map((pr) => {

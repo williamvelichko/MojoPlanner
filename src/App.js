@@ -17,14 +17,14 @@ function App() {
       </div>
       <div className="route_container">
         <Switch>
+          <Route exact path="/landingpage" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
           <Route path="/projectListings" component={ProjectListings} />
           <Route path={`/singleProject/:id`} component={SingleProject} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/login" component={LoginForm} />
           <Route path="/addtask" component={AddTask} />
           <Route path="/addproject" component={AddProject} />
-          <Route path="/landingpage" component={LandingPage} />
-          <Route exact path="/" component={LandingPage} />
         </Switch>
       </div>
     </div>

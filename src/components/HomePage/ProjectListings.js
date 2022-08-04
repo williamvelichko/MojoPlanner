@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { getProjects } from "../reducer/actions";
 
 function ProjectListings(props) {
-  const { projects } = props;
-  console.log(projects.project_id);
+  const { projects, dispatch } = props;
+  useEffect(() => {
+    dispatch(getProjects());
+  }, []);
+
+  console.log(projects);
 
   const onSubmit = {};
 
