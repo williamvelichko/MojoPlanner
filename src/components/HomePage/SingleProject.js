@@ -29,7 +29,7 @@ function SingleProject(props) {
                 <div>
                   <h5>{tsk.task_name}</h5>
                   <h5>{tsk.info}</h5>
-                  <button>Edit Task!</button>
+                  <Link to="/editTask">Edit Task!</Link>
                   <button>Task Finished!</button>
                 </div>
               );

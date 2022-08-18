@@ -27,6 +27,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         projects: action.payload,
       };
+    // case ADD_PROJECT:
+    //   return {};
     default:
       return state;
   }
