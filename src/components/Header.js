@@ -56,7 +56,7 @@ const HeaderMain = styled.div`
   justify-content: space-between;
   font-family: Poppins;
   //background-color: #c7d2fe;
-  background-image: url("https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png");
+  //background-image: url("https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

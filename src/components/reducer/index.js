@@ -1,4 +1,4 @@
-import { GET_PROJECTS } from "./actions";
+import { GET_PROJECTS, ADD_PROJECT } from "./actions";
 
 const initialState = {
   projects: [
@@ -27,8 +27,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         projects: action.payload,
       };
-    // case ADD_PROJECT:
-    //   return {};
+    case ADD_PROJECT:
+      return {
+        ...state,
+        projects: [...state.projects, action.payload],
+      };
     default:
       return state;
   }
