@@ -21,7 +21,7 @@ function SingleProject(props) {
               <h3>{pr.project_name}</h3>
               <h4>{pr.project_leader}</h4>
             </div>
-            <Link to={`/editProject/${params.id}`}>Edit Project</Link>
+            <Link to={`/editProject/${pr.project_id}`}>Edit Project</Link>
             <div>
               <Link to="/addtask">Add Task</Link>
             </div>

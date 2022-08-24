@@ -26,7 +26,7 @@ function App() {
           <Route path="/login" component={LoginForm} />
           <Route path="/addtask" component={AddTask} />
           <Route path="/addproject" component={AddProject} />
-          <Route path="/editProject" component={EditProject} />
+          <Route path="/editProject/:id" component={EditProject} />
         </Switch>
       </div>
     </div>

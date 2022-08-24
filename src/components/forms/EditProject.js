@@ -10,7 +10,9 @@ function EditProject(props) {
 
   const { push } = useHistory();
   const params = useParams();
+
   const [project, setProject] = useState({
+    project_id: "",
     project_name: "",
     project_leader: "",
   });
@@ -18,18 +20,12 @@ function EditProject(props) {
   useEffect(() => {
     axios.get(`http://localhost:4000/api/projects`).then((res) => {
       res.data.map((pr) => {
-        if ((pr.project_id = params.id)) {
-          console.log(pr);
-          setProject({
-            ...project,
-            [project.project_name]: pr.project_name,
-            [project.project_leader]: pr.project_leader,
-          });
+        if (pr.project_id == params.id) {
+          setProject(pr);
         }
       });
     });
   }, []);
-  //console.log(project);
 
   const handleChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value });
