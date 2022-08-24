@@ -1,4 +1,4 @@
-import { GET_PROJECTS, ADD_PROJECT } from "./actions";
+import { GET_PROJECTS, ADD_PROJECT, EDIT_PROJECT } from "./actions";
 
 const initialState = {
   projects: [

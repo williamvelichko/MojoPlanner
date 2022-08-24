@@ -8,6 +8,7 @@ import LandingPage from "./components/landingPage/LandingPage";
 import SingleProject from "./components/HomePage/SingleProject";
 import AddProject from "./components/forms/AddProject";
 import AddTask from "./components/forms/AddTask";
+import EditProject from "./components/forms/EditProject";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path="/login" component={LoginForm} />
           <Route path="/addtask" component={AddTask} />
           <Route path="/addproject" component={AddProject} />
-          <Route path="/editProject" component={AddProject} />
+          <Route path="/editProject" component={EditProject} />
         </Switch>
       </div>
     </div>
