@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
 import { addProject } from "../reducer/actions";
+import { useParams } from "react-router-dom";
 
 function AddProject(props) {
   const { push } = useHistory();
-  const { dispatch } = props;
+  const params = useParams();
+  const { dispatch, editing } = props;
   const [project, setProject] = useState({
     project_name: "",
     project_leader: "",
@@ -51,5 +53,10 @@ function AddProject(props) {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    editing: state.editing,
+  };
+};
 
-export default connect()(AddProject);
+export default connect(mapStateToProps)(AddProject);

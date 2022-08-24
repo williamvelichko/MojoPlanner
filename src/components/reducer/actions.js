@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_SINGLE_PROJECT = "GET_SINGLE_PROJECT";
 export const ADD_PROJECT = "ADD_PROJECT";
+export const EDIT_PROJECT = "EDIT_PROJECT";
 
 export const getProjects = () => (dispatch) => {
   axios.get("http://localhost:4000/api/projects/organized").then((res) => {
@@ -15,6 +16,20 @@ export const addProject = (project) => (dispatch) => {
     .post("http://localhost:4000/api/projects/newProject", project)
     .then((res) => {
       dispatch({ type: ADD_PROJECT, payload: res.data });
+    });
+};
+
+export const editProject = (current, project) => (dispatch) => {
+  axios
+    .put(
+      `http://localhost:4000/api/projects/updateProject${current.project_id}`,
+      {
+        ...project,
+        project_id: current.project_id,
+      }
+    )
+    .then((res) => {
+      dispatch({ type: EDIT_PROJECT, payload: res.data });
     });
 };
 

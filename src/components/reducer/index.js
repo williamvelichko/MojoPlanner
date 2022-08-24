@@ -18,6 +18,7 @@ const initialState = {
     //   ],
     // },
   ],
+  editing: false,
 };
 
 const reducer = (state = initialState, action) => {
