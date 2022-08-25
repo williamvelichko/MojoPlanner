@@ -22,14 +22,10 @@ export const addProject = (project) => (dispatch) => {
 export const updateProject = (pr) => (dispatch) => {
   axios
     .put(
-      `http://localhost:4000/api/projects/updateProject/${pr.project_id}`
-      // , {
-      //   ...pr,
-      //   project_id: pr.project_id,
-      // }
+      `http://localhost:4000/api/projects/updateProject/${pr.project_id}`,
+      pr
     )
     .then((res) => {
-      console.log(res);
       dispatch({ type: EDIT_PROJECT, payload: res.data });
     });
 };

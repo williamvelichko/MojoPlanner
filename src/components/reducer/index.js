@@ -26,7 +26,9 @@ const reducer = (state = initialState, action) => {
     case GET_PROJECTS:
       return {
         ...state,
-        projects: action.payload,
+        projects: action.payload.sort((a, b) => {
+          return a.project_id - b.project_id;
+        }),
       };
     case ADD_PROJECT:
       return {
@@ -34,17 +36,10 @@ const reducer = (state = initialState, action) => {
         projects: [...state.projects, action.payload],
       };
     case EDIT_PROJECT:
+      console.log(action.payload);
       return {
         ...state,
-        projects: [...state.projects, action.payload],
-        // projects: state.projects.map((res) => {
-        //   console.log(res);
-        //   if (res.project_id == action.payload.project_id) {
-        //     return action.payload;
-        //   } else {
-        //     return res;
-        //   }
-        // }),
+        projects: action.payload,
       };
     default:
       return state;

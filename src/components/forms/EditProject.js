@@ -36,10 +36,14 @@ function EditProject(props) {
     dispatch(updateProject(project));
     push(`/singleProject/${params.id}`);
   };
+  const cancel = (e) => {
+    e.preventDefault();
+    push(`/singleProject/${params.id}`);
+  };
   return (
     <div>
       <div>
-        <form onSubmit={submit}>
+        <form>
           <h2>Project</h2>
           <label>ProjectName :</label>
           <input
@@ -55,8 +59,8 @@ function EditProject(props) {
             value={project.project_leader}
             onChange={handleChange}
           />
-          <button>save</button>
-          <button>cancel</button>
+          <button onClick={submit}>save</button>
+          <button onClick={cancel}>cancel</button>
         </form>
         {/* <p>{error}</p> */}
       </div>

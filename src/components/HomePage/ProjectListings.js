@@ -10,10 +10,6 @@ function ProjectListings(props) {
     dispatch(getProjects());
   }, []);
 
-  console.log(projects);
-
-  const onSubmit = {};
-
   return (
     <ListingContainer>
       <div>
