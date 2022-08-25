@@ -4,9 +4,10 @@ import { useHistory } from "react-router";
 import { connect } from "react-redux";
 import { addProject } from "../reducer/actions";
 import { useParams } from "react-router-dom";
+import { updateProject } from "../reducer/actions";
 
 function EditProject(props) {
-  const { projects } = props;
+  const { projects, dispatch } = props;
 
   const { push } = useHistory();
   const params = useParams();
@@ -32,6 +33,8 @@ function EditProject(props) {
   };
   const submit = (e) => {
     e.preventDefault();
+    dispatch(updateProject(project));
+    push(`/singleProject/${params.id}`);
   };
   return (
     <div>
@@ -52,7 +55,8 @@ function EditProject(props) {
             value={project.project_leader}
             onChange={handleChange}
           />
-          <button>save!</button>
+          <button>save</button>
+          <button>cancel</button>
         </form>
         {/* <p>{error}</p> */}
       </div>

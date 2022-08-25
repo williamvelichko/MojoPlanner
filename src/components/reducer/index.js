@@ -33,6 +33,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         projects: [...state.projects, action.payload],
       };
+    case EDIT_PROJECT:
+      return {
+        ...state,
+        projects: [...state.projects, action.payload],
+        // projects: state.projects.map((res) => {
+        //   console.log(res);
+        //   if (res.project_id == action.payload.project_id) {
+        //     return action.payload;
+        //   } else {
+        //     return res;
+        //   }
+        // }),
+      };
     default:
       return state;
   }

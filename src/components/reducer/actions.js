@@ -19,16 +19,17 @@ export const addProject = (project) => (dispatch) => {
     });
 };
 
-export const editProject = (current, project) => (dispatch) => {
+export const updateProject = (pr) => (dispatch) => {
   axios
     .put(
-      `http://localhost:4000/api/projects/updateProject${current.project_id}`,
-      {
-        ...project,
-        project_id: current.project_id,
-      }
+      `http://localhost:4000/api/projects/updateProject/${pr.project_id}`
+      // , {
+      //   ...pr,
+      //   project_id: pr.project_id,
+      // }
     )
     .then((res) => {
+      console.log(res);
       dispatch({ type: EDIT_PROJECT, payload: res.data });
     });
 };
