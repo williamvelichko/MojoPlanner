@@ -2,16 +2,26 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { deleteProject } from "../reducer/actions";
+import { useHistory } from "react-router";
 function SingleProject(props) {
   const [result, setResult] = useState([]);
-  const { projects } = props;
+  const { projects, dispatch } = props;
   const params = useParams();
+  const { push } = useHistory();
 
   useEffect(() => {
     axios.get(`http://localhost:4000/api/projects/${params.id}`).then((res) => {
       setResult(res.data);
     });
   }, []);
+
+  const deletePR = (e) => {
+    e.preventDefault();
+    dispatch(deleteProject(params.id));
+    push("/projectListings");
+  };
+
   return (
     <div>
       {result.map((pr) => {
@@ -38,6 +48,7 @@ function SingleProject(props) {
           </div>
         );
       })}
+      <button onClick={deletePR}>Delete Project</button>
     </div>
   );
 }

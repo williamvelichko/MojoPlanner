@@ -1,4 +1,9 @@
-import { GET_PROJECTS, ADD_PROJECT, EDIT_PROJECT } from "./actions";
+import {
+  GET_PROJECTS,
+  ADD_PROJECT,
+  EDIT_PROJECT,
+  DELETE_PROJECT,
+} from "./actions";
 
 const initialState = {
   projects: [
@@ -36,10 +41,16 @@ const reducer = (state = initialState, action) => {
         projects: [...state.projects, action.payload],
       };
     case EDIT_PROJECT:
-      console.log(action.payload);
       return {
         ...state,
         projects: action.payload,
+      };
+    case DELETE_PROJECT:
+      return {
+        ...state,
+        projects: state.projects.filter(
+          (res) => res.project_id !== action.payload
+        ),
       };
     default:
       return state;

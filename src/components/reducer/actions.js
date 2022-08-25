@@ -4,6 +4,10 @@ export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_SINGLE_PROJECT = "GET_SINGLE_PROJECT";
 export const ADD_PROJECT = "ADD_PROJECT";
 export const EDIT_PROJECT = "EDIT_PROJECT";
+export const DELETE_PROJECT = "DELETE_PROJECT";
+export const ADD_TASK = "ADD_TASK";
+export const EDIT_TASK = "EDIT_TASK";
+export const DELETE_TASK = "DELETE_TASK";
 
 export const getProjects = () => (dispatch) => {
   axios.get("http://localhost:4000/api/projects/organized").then((res) => {
@@ -27,6 +31,38 @@ export const updateProject = (pr) => (dispatch) => {
     )
     .then((res) => {
       dispatch({ type: EDIT_PROJECT, payload: res.data });
+    });
+};
+
+export const deleteProject = (project_id) => (dispatch) => {
+  axios
+    .delete(`http://localhost:4000/api/projects/${project_id}`)
+    .then((res) => {
+      dispatch({ type: DELETE_PROJECT, payload: project_id });
+    });
+};
+
+export const addTask = (task, project_id) => (dispatch) => {
+  axios
+    .post(`http://localhost:4000/api/projects/newTask/${project_id}`, task)
+    .then((res) => {
+      dispatch({ type: ADD_TASK, payload: res.data });
+    });
+};
+
+export const editTask = (task) => (dispatch) => {
+  axios
+    .put(`http://localhost:4000/api/projects/task/${task.task_id}`, task)
+    .then((res) => {
+      dispatch({ type: EDIT_TASK, payload: res.data });
+    });
+};
+
+export const deleteTask = (task_id) => (dispatch) => {
+  axios
+    .delete(`http://localhost:4000/api/projects/deleteTask/${task_id}`)
+    .then((res) => {
+      dispatch({ type: DELETE_TASK, payload: task_id });
     });
 };
 
