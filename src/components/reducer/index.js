@@ -3,6 +3,9 @@ import {
   ADD_PROJECT,
   EDIT_PROJECT,
   DELETE_PROJECT,
+  ADD_TASK,
+  EDIT_TASK,
+  DELETE_TASK,
 } from "./actions";
 
 const initialState = {
@@ -51,6 +54,21 @@ const reducer = (state = initialState, action) => {
         projects: state.projects.filter(
           (res) => res.project_id !== action.payload
         ),
+      };
+    case ADD_TASK:
+      return {
+        ...state,
+        projects: [...state.projects, action.payload],
+      };
+    case EDIT_TASK:
+      return {
+        ...state,
+        projects: action.payload,
+      };
+    case DELETE_TASK:
+      return {
+        ...state,
+        projects: action.payload,
       };
     default:
       return state;

@@ -33,13 +33,13 @@ function SingleProject(props) {
             </div>
             <Link to={`/editProject/${pr.project_id}`}>Edit Project</Link>
             <div>
-              <Link to="/addtask">Add Task</Link>
+              <Link to={`/addTask/${pr.project_id}`}>Add Task</Link>
             </div>
             {pr.project_tasks.map((tsk) => {
               return (
                 <div>
                   <h5>{tsk.task_name}</h5>
-                  <h5>{tsk.info}</h5>
+                  <h5>{tsk.task_information}</h5>
                   <Link to="/editTask">Edit Task!</Link>
                   <button>Task Finished!</button>
                 </div>
