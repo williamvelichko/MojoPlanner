@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { deleteProject } from "../reducer/actions";
+import { deleteProject, deleteTask } from "../reducer/actions";
 import { useHistory } from "react-router";
 function SingleProject(props) {
   const [result, setResult] = useState([]);
@@ -20,6 +20,10 @@ function SingleProject(props) {
     e.preventDefault();
     dispatch(deleteProject(params.id));
     push("/projectListings");
+  };
+  const deleteTsk = (taskID) => {
+    dispatch(deleteTask(taskID));
+    push(`/singleProject/${params.id}`);
   };
 
   return (
@@ -40,8 +44,12 @@ function SingleProject(props) {
                 <div>
                   <h5>{tsk.task_name}</h5>
                   <h5>{tsk.task_information}</h5>
-                  <Link to="/editTask">Edit Task!</Link>
-                  <button>Task Finished!</button>
+                  <Link to={`/editTask/${pr.project_id}/${tsk.task_id}`}>
+                    Edit Task!
+                  </Link>
+                  <button onClick={() => deleteTsk(tsk.task_id)}>
+                    Task Finished!
+                  </button>
                 </div>
               );
             })}

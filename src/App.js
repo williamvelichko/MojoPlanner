@@ -9,6 +9,7 @@ import SingleProject from "./components/HomePage/SingleProject";
 import AddProject from "./components/forms/AddProject";
 import AddTask from "./components/forms/AddTask";
 import EditProject from "./components/forms/EditProject";
+import EditTask from "./components/forms/EditTask";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/addtask/:project_id" component={AddTask} />
           <Route path="/addproject" component={AddProject} />
           <Route path="/editProject/:id" component={EditProject} />
+          <Route path="/editTask/:project_id/:task_id" component={EditTask} />
         </Switch>
       </div>
     </div>
