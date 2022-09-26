@@ -8,7 +8,7 @@ function Header() {
     <HeaderMain>
       <Logo>
         <Link className="logo" to="/landingpage">
-          <h1>Logo</h1>
+          <h1>MojoPlanner</h1>
         </Link>
       </Logo>
       {!isAuthenticated && (
@@ -18,14 +18,14 @@ function Header() {
             Login
           </Link> */}
             <button className="link1" onClick={() => loginWithRedirect()}>
-              Login
+              <p>Login/Signup</p>
             </button>
           </h3>
-          <h3>
+          {/* <h3>
             <Link className="link2" to="/Signup">
               Create Account
             </Link>
-          </h3>
+          </h3> */}
         </NavBar>
       )}
       {isAuthenticated && (
@@ -55,12 +55,9 @@ const HeaderMain = styled.div`
   width: 100%;
   justify-content: space-between;
   font-family: Poppins;
-  //background-color: #c7d2fe;
-  //background-image: url("https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: #244F58;
+ 
+
 } 
 `;
 
@@ -68,9 +65,10 @@ const Logo = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 15%;
+  margin-left: 30px;
   .logo {
     text-decoration: none;
-    color: black;
+    color: #ffffff;
   }
 `;
 
@@ -80,21 +78,22 @@ const NavBar = styled.div`
   width: 30%;
   justify-content: space-evenly;
   button {
-    padding: 10px;
-    background-color: #e2e8f0;
-    border: 1px solid grey;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #244f58;
+    border: 1px solid #244f58;
   }
-  button:hover {
-    background-color: #f1f5f9;
-  }
+  // button:hover {
+  //   background-color: #f1f5f9;
+  // }
   .link1 {
     text-decoration: none;
-    font-size: 1rem;
-    color: black;
+    font-size: 1.2rem;
+    color: #ffffff;
   }
   .link2 {
     text-decoration: none;
     font-size: 1.5rem;
-    color: black;
+    color: #ffffff;
   }
 `;
