@@ -6,7 +6,8 @@ import { deleteProject, deleteTask } from "../reducer/actions";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import EditIcon from "@mui/icons-material/Edit";
 function SingleProject(props) {
   const [result, setResult] = useState([]);
   const { projects, dispatch } = props;
@@ -63,20 +64,38 @@ function SingleProject(props) {
                     </div>
                   </div>
                   <div className="taskButtons">
-                    <Link to={`/editTask/${pr.project_id}/${tsk.task_id}`}>
-                      Edit Task!
+                    <Link
+                      className="editTask"
+                      to={`/editTask/${pr.project_id}/${tsk.task_id}`}
+                    >
+                      <p>
+                        Edit Task <EditIcon />
+                      </p>
                     </Link>
-                    <button onClick={() => deleteTsk(tsk.task_id)}>
-                      <p>Task Finished!</p>
+                    <button
+                      className="deleteTask"
+                      onClick={() => deleteTsk(tsk.task_id)}
+                    >
+                      <p>
+                        Task Finished <CheckCircleOutlineIcon />
+                      </p>
                     </button>
                   </div>
                 </Information>
               );
             })}
-            <div>
-              <Link to={`/editProject/${pr.project_id}`}>Edit Project</Link>
-            </div>
-            <button onClick={deletePR}>Delete Project</button>
+            <EndButtons>
+              <Link
+                className="editProject"
+                to={`/editProject/${pr.project_id}`}
+              >
+                Edit Project
+              </Link>
+
+              <button className="deleteProject" onClick={deletePR}>
+                Delete Project
+              </button>
+            </EndButtons>
           </MainContainer>
         );
       })}
@@ -97,6 +116,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   width: 90%;
   margin: auto;
+  height: 100vh;
 `;
 
 const ProjectName = styled.div`
@@ -162,30 +182,75 @@ const Information = styled.div`
     display: flex;
     flex-direction: column;
     width: 70%;
+    padding: 20px;
     .text {
-      margin-left: 40px;
+      margin-left: 20px;
       display: flex;
       flex-direciton: row;
       justify-content: space-between;
+      margin-bottom: 10px;
       h5,
       h4 {
         font-family: fira sans;
         color: #bkack;
         font-weight: 50;
         font-size: 1.1rem;
+        margin: 0;
       }
       h4 {
         width: 90%;
         background-color: #ffffff;
         padding: 10px;
+        border: 1px solid #e46363;
       }
       .taskInfo {
-        height: 20vh;
+        height: 15vh;
       }
     }
   }
 
   .taskButtons {
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+
+    .editTask,
+    .deleteTask {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      text-decoration: none;
+      width: 70%;
+      height: 7vh;
+      border: 1px solid transparent;
+      border-radius: 10px 10px 10px;
+      p {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 60%;
+        color: #ffffff;
+        font-family: fira sans;
+        font-size: 1.1rem;
+      }
+    }
+    .editTask {
+      background-color: #244f58;
+    }
+    .deleteTask {
+      background-color: #e46363;
+    }
   }
+`;
+
+const EndButtons = styled.div`
+  width: 100%;
+  //position: sticky;
+  display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between:
 `;
