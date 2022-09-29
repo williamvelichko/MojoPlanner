@@ -51,22 +51,26 @@ function SingleProject(props) {
             </ProjectName>
             {pr.project_tasks.map((tsk) => {
               return (
-                <div>
-                  <h4>
-                    Title: <h5>{tsk.task_name}</h5>
-                  </h4>
-
-                  <h4>
-                    Task: <h5>{tsk.task_information}</h5>
-                  </h4>
-
-                  <Link to={`/editTask/${pr.project_id}/${tsk.task_id}`}>
-                    Edit Task!
-                  </Link>
-                  <button onClick={() => deleteTsk(tsk.task_id)}>
-                    <p>Task Finished!</p>
-                  </button>
-                </div>
+                <Information>
+                  <div className="eachTask">
+                    <div className="text">
+                      <h5>Title:</h5>
+                      <h4>{tsk.task_name}</h4>
+                    </div>
+                    <div className="text">
+                      <h5>Task:</h5>
+                      <h4 className="taskInfo">{tsk.task_information}</h4>
+                    </div>
+                  </div>
+                  <div className="taskButtons">
+                    <Link to={`/editTask/${pr.project_id}/${tsk.task_id}`}>
+                      Edit Task!
+                    </Link>
+                    <button onClick={() => deleteTsk(tsk.task_id)}>
+                      <p>Task Finished!</p>
+                    </button>
+                  </div>
+                </Information>
               );
             })}
             <div>
@@ -109,7 +113,8 @@ align-items: center;
   h3{
     font-weight: 40;
     font-family: fira sans;
-    color: #FFFFFF
+    color: #FFFFFF;
+    font-size: 1.4rem;
     
   }
 }
@@ -142,7 +147,45 @@ align-items: center;
     width: 80%;
      font-family: fira sans;
      color: #FFFFFF
+     
    }
   }
 }
+`;
+
+const Information = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: #d9d9d9;
+
+  .eachTask {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    .text {
+      margin-left: 40px;
+      display: flex;
+      flex-direciton: row;
+      justify-content: space-between;
+      h5,
+      h4 {
+        font-family: fira sans;
+        color: #bkack;
+        font-weight: 50;
+        font-size: 1.1rem;
+      }
+      h4 {
+        width: 90%;
+        background-color: #ffffff;
+        padding: 10px;
+      }
+      .taskInfo {
+        height: 20vh;
+      }
+    }
+  }
+
+  .taskButtons {
+    width: 30%;
+  }
 `;
