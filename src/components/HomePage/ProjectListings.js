@@ -104,6 +104,10 @@ color: #FFFFFF
   border-radius: 3px;
   box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
   box-sizing: border-box;
+  :hover {
+    box-shadow: 0px 0px 3px 3px grey;
+    transition-duration: 0.2s;
+  }
 
 p{
   display: flex;

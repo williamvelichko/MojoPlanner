@@ -10,7 +10,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import EditIcon from "@mui/icons-material/Edit";
 function SingleProject(props) {
   const [result, setResult] = useState([]);
-  const { projects, dispatch } = props;
+  const { projects, dispatch, location } = props;
   const params = useParams();
   const { push } = useHistory();
 
@@ -28,6 +28,7 @@ function SingleProject(props) {
   const deleteTsk = (taskID) => {
     dispatch(deleteTask(taskID));
     push(`/singleProject/${params.id}`);
+    location.reload();
   };
 
   return (
@@ -36,55 +37,57 @@ function SingleProject(props) {
         return (
           //<MainContainer>
           <MainContainer>
-            <ProjectName>
-              <div className="names">
-                <h3>{pr.project_name}</h3>
-                <h3>{pr.project_leader}</h3>
-              </div>
+            <div>
+              <ProjectName>
+                <div className="names">
+                  <h3>{pr.project_name}</h3>
+                  <h3>{pr.project_leader}</h3>
+                </div>
 
-              <div className="addTask">
-                <Link className="button" to={`/addTask/${pr.project_id}`}>
-                  <p>
-                    Add Task <AddCircleOutlineIcon />
-                  </p>
-                </Link>
-              </div>
-            </ProjectName>
-            {pr.project_tasks.map((tsk) => {
-              return (
-                <Information>
-                  <div className="eachTask">
-                    <div className="text">
-                      <h5>Title:</h5>
-                      <h4>{tsk.task_name}</h4>
+                <div className="addTask">
+                  <Link className="button" to={`/addTask/${pr.project_id}`}>
+                    <p>
+                      Add Task <AddCircleOutlineIcon />
+                    </p>
+                  </Link>
+                </div>
+              </ProjectName>
+              {pr.project_tasks.map((tsk) => {
+                return (
+                  <Information>
+                    <div className="eachTask">
+                      <div className="text">
+                        <h5>Title:</h5>
+                        <h4>{tsk.task_name}</h4>
+                      </div>
+                      <div className="text">
+                        <h5>Task:</h5>
+                        <h4 className="taskInfo">{tsk.task_information}</h4>
+                      </div>
                     </div>
-                    <div className="text">
-                      <h5>Task:</h5>
-                      <h4 className="taskInfo">{tsk.task_information}</h4>
+                    <div className="taskButtons">
+                      <Link
+                        className="editTask"
+                        to={`/editTask/${pr.project_id}/${tsk.task_id}`}
+                      >
+                        <p>
+                          Edit Task <EditIcon />
+                        </p>
+                      </Link>
+                      <button
+                        className="deleteTask"
+                        onClick={() => deleteTsk(tsk.task_id)}
+                      >
+                        <p>
+                          Task Finished <CheckCircleOutlineIcon />
+                        </p>
+                      </button>
                     </div>
-                  </div>
-                  <div className="taskButtons">
-                    <Link
-                      className="editTask"
-                      to={`/editTask/${pr.project_id}/${tsk.task_id}`}
-                    >
-                      <p>
-                        Edit Task <EditIcon />
-                      </p>
-                    </Link>
-                    <button
-                      className="deleteTask"
-                      onClick={() => deleteTsk(tsk.task_id)}
-                    >
-                      <p>
-                        Task Finished <CheckCircleOutlineIcon />
-                      </p>
-                    </button>
-                  </div>
-                </Information>
-              );
-            })}
-            <EndButtons>
+                  </Information>
+                );
+              })}
+            </div>
+            {/* <EndButtons>
               <Link
                 className="editProject"
                 to={`/editProject/${pr.project_id}`}
@@ -95,10 +98,23 @@ function SingleProject(props) {
               <button className="deleteProject" onClick={deletePR}>
                 Delete Project
               </button>
-            </EndButtons>
+            </EndButtons> */}
           </MainContainer>
         );
       })}
+      <EndButtons>
+        <Link className="editProject" to={`/editProject/${params.id}`}>
+          <p>
+            Edit Project <EditIcon />
+          </p>
+        </Link>
+
+        <button className="deleteProject" onClick={deletePR}>
+          <p>
+            Delete Project <CheckCircleOutlineIcon />
+          </p>
+        </button>
+      </EndButtons>
     </div>
   );
 }
@@ -114,9 +130,11 @@ export default connect(mapStateToProps)(SingleProject);
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  //justify-content: space-between;
   width: 90%;
   margin: auto;
-  height: 100vh;
+  // height: 85vh;
+  margin-bottom: 100px;
 `;
 
 const ProjectName = styled.div`
@@ -159,6 +177,10 @@ align-items: center;
    border-radius: 3px;
    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
    box-sizing: border-box;
+   :hover {
+    box-shadow: 0px 0px 3px 3px grey;
+    transition-duration: 0.2s;
+  }
    p{
     display: flex;
     flex-direction: row;
@@ -177,7 +199,7 @@ const Information = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #d9d9d9;
-
+  margin-top: 20px;
   .eachTask {
     display: flex;
     flex-direction: column;
@@ -203,6 +225,9 @@ const Information = styled.div`
         padding: 10px;
         border: 1px solid #e46363;
       }
+      h5 {
+        font-weight: bold;
+      }
       .taskInfo {
         height: 15vh;
       }
@@ -227,6 +252,10 @@ const Information = styled.div`
       height: 7vh;
       border: 1px solid transparent;
       border-radius: 10px 10px 10px;
+      :hover {
+        box-shadow: 0px 0px 3px 3px grey;
+        transition-duration: 0.2s;
+      }
       p {
         display: flex;
         flex-direction: row;
@@ -239,7 +268,7 @@ const Information = styled.div`
       }
     }
     .editTask {
-      background-color: #244f58;
+      background-color: #0b343d;
     }
     .deleteTask {
       background-color: #e46363;
@@ -249,8 +278,44 @@ const Information = styled.div`
 
 const EndButtons = styled.div`
   width: 100%;
-  //position: sticky;
+  padding: 20px;
+  position: fixed;
+  bottom: 0%;
+  opacity: 1;
+  background-color: #244f58;
+
   display: flex;
-  //   flex-direction: row;
-  //   justify-content: space-between:
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+  .editProject,
+  .deleteProject {
+    width: 20%;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    :hover {
+      box-shadow: 0px 0px 3px 3px grey;
+      transition-duration: 0.2s;
+    }
+    p {
+      margin: 0;
+      color: #ffffff;
+      font-family: fira sans;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 70%;
+      margin: auto;
+    }
+  }
+  .editProject {
+    background-color: #0b343d;
+  }
+  .deleteProject {
+    background-color: #e46363;
+  }
 `;
