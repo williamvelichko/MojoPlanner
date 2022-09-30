@@ -214,7 +214,7 @@ const Information = styled.div`
       h5,
       h4 {
         font-family: fira sans;
-        color: #bkack;
+        color: #black;
         font-weight: 50;
         font-size: 1.1rem;
         margin: 0;
@@ -230,6 +230,8 @@ const Information = styled.div`
       }
       .taskInfo {
         height: 15vh;
+        width: 90%;
+        overflow-wrap: break-word;
       }
     }
   }
