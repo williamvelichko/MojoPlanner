@@ -87,18 +87,6 @@ function SingleProject(props) {
                 );
               })}
             </div>
-            {/* <EndButtons>
-              <Link
-                className="editProject"
-                to={`/editProject/${pr.project_id}`}
-              >
-                Edit Project
-              </Link>
-
-              <button className="deleteProject" onClick={deletePR}>
-                Delete Project
-              </button>
-            </EndButtons> */}
           </MainContainer>
         );
       })}
@@ -316,6 +304,7 @@ const EndButtons = styled.div`
   }
   .editProject {
     background-color: #0b343d;
+    text-decoration: none;
   }
   .deleteProject {
     background-color: #e46363;

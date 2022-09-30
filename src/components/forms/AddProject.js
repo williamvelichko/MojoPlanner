@@ -34,30 +34,32 @@ function AddProject(props) {
       <h2>Create new project</h2>
       <Form className="formContainer" onSubmit={submit}>
         <div className="category">
-          <label>ProjectName :</label>
+          <label>Project Title :</label>
           <input
             name="project_name"
             type="text"
-            placeholder="Project Name"
+            placeholder="Title"
             value={project.project_name}
             onChange={handleChange}
           />
         </div>
         <div className="category">
-          <label>ProjectLeader :</label>
+          <label>Project Leader :</label>
 
           <input
             name="project_leader"
             type="text"
-            placeholder="Project Leader"
+            placeholder="Name"
             value={project.project_leader}
             onChange={handleChange}
           />
         </div>
         <Button>
-          <h4>
-            Add Project <AddCircleOutlineIcon />
-          </h4>{" "}
+          <button>
+            <h4>
+              Add Project <AddCircleOutlineIcon />
+            </h4>{" "}
+          </button>
         </Button>
       </Form>
       <p>{error}</p>
@@ -93,6 +95,7 @@ const Form = styled.form`
   width: 90%;
   height: 30vh;
   margin: auto;
+  box-shadow: 30px 30px 2px black, 15px 15px 1px 2px rgba(0, 0, 0, 0);
   .category {
     display: flex;
     flex-direction: column;
@@ -103,21 +106,52 @@ const Form = styled.form`
 
     label {
       font-family: fira sans;
+      font-size: 1.2rem;
     }
 
     input {
       padding: 10px;
+      border-radius: 7px;
+      :hover {
+        border: 2px solid #257dae;
+        box-shadow: 0px 0px 1px 1px #257dae;
+        transition-duration: 0.2s;
+      }
     }
   }
 `;
 
-const Button = styled.button`
+const Button = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto;
-  text-align: center;
   justify-content: space-evenly;
-  padding: 0;
-  height: 7vh;
-  width: 20%;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+  button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+    height: 7vh;
+    background-color: #257dae;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    :hover {
+      box-shadow: 0px 0px 3px 3px grey;
+      transition-duration: 0.2s;
+    }
+    h4 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 60%;
+      color: #ffffff;
+      font-weight: 30;
+      font-size: 1.2rem;
+    }
+  }
 `;
