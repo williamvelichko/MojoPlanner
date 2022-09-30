@@ -112,6 +112,7 @@ const Form = styled.form`
     }
 
     input {
+      font-family: fira sans;
       margin: 10px 0px 10px 0px;
       padding: 10px;
       border-radius: 7px;

@@ -111,10 +111,9 @@ const Form = styled.form`
       font-family: fira sans;
       font-size: 1.2rem;
     }
-    textarea {
-      margin-top: 20px;
-    }
+
     .input {
+      font-family: fira sans;
       padding: 10px;
       border-radius: 7px;
       border: 2px solid black;
@@ -141,6 +140,7 @@ const Form = styled.form`
       margin-top: 20px;
     }
     .input {
+      font-family: fira sans;
       padding: 10px;
       border-radius: 7px;
       border: 2px solid black;
