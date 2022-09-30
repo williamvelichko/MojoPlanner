@@ -41,6 +41,7 @@ function AddProject(props) {
             placeholder="Title"
             value={project.project_name}
             onChange={handleChange}
+            maxLength="60"
           />
         </div>
         <div className="category">
@@ -52,17 +53,18 @@ function AddProject(props) {
             placeholder="Name"
             value={project.project_leader}
             onChange={handleChange}
+            maxLength="60"
           />
         </div>
         <Button>
           <button>
             <h4>
               Add Project <AddCircleOutlineIcon />
-            </h4>{" "}
+            </h4>
           </button>
+          <p>{error}</p>
         </Button>
       </Form>
-      <p>{error}</p>
     </MainContainer>
   );
 }
@@ -93,7 +95,7 @@ const Form = styled.form`
   background-color: #bfc7d2;
   padding: 20px;
   width: 90%;
-  height: 30vh;
+  //height: 30vh;
   margin: auto;
   box-shadow: 30px 30px 2px black, 15px 15px 1px 2px rgba(0, 0, 0, 0);
   .category {
@@ -103,13 +105,14 @@ const Form = styled.form`
     height: 30%;
     display: flex;
     flex-direction: column;
-
+    margin-bottom: 20px;
     label {
       font-family: fira sans;
       font-size: 1.2rem;
     }
 
     input {
+      margin: 10px 0px 10px 0px;
       padding: 10px;
       border-radius: 7px;
       :hover {
@@ -153,5 +156,10 @@ const Button = styled.div`
       font-weight: 30;
       font-size: 1.2rem;
     }
+  }
+  p {
+    color: red;
+    font-weight: bold;
+    font-family: fira sans;
   }
 `;
