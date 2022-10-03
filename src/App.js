@@ -10,6 +10,7 @@ import AddProject from "./components/forms/AddProject";
 import AddTask from "./components/forms/AddTask";
 import EditProject from "./components/forms/EditProject";
 import EditTask from "./components/forms/EditTask";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -21,14 +22,20 @@ function App() {
         <Switch>
           <Route exact path="/landingpage" component={LandingPage} />
           <Route exact path="/" component={LandingPage} />
-          <Route path="/projectListings" component={ProjectListings} />
-          <Route path={`/singleProject/:id`} component={SingleProject} />
-          <Route path="/signup" component={SignUpForm} />
-          <Route path="/login" component={LoginForm} />
-          <Route path="/addtask/:project_id" component={AddTask} />
-          <Route path="/addproject" component={AddProject} />
-          <Route path="/editProject/:id" component={EditProject} />
-          <Route path="/editTask/:project_id/:task_id" component={EditTask} />
+          <ProtectedRoute path="/projectListings" component={ProjectListings} />
+          <ProtectedRoute
+            path={`/singleProject/:id`}
+            component={SingleProject}
+          />
+          {/* <Route path="/signup" component={SignUpForm} />
+          <Route path="/login" component={LoginForm} /> */}
+          <ProtectedRoute path="/addtask/:project_id" component={AddTask} />
+          <ProtectedRoute path="/addproject" component={AddProject} />
+          <ProtectedRoute path="/editProject/:id" component={EditProject} />
+          <ProtectedRoute
+            path="/editTask/:project_id/:task_id"
+            component={EditTask}
+          />
         </Switch>
       </div>
     </div>
