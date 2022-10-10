@@ -14,14 +14,14 @@ import Loading from "./Loading";
 // );
 
 function ProtectedRoute(props) {
-  const { component: Component, rest } = props;
+  // const { component: Component, rest } = props;
 
   return (
     <Route
-      {...rest}
+      // {...rest}
       render={() => {
         if (localStorage.getItem("token")) {
-          return <Component />;
+          return <Route {...props} />;
         } else {
           return <Redirect to="/Signup" />;
         }

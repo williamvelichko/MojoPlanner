@@ -9,15 +9,17 @@ export const ADD_TASK = "ADD_TASK";
 export const EDIT_TASK = "EDIT_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 
-export const getProjects = () => (dispatch) => {
-  axios.get("http://localhost:4000/api/projects/organized").then((res) => {
-    dispatch({ type: GET_PROJECTS, payload: res.data });
-  });
+export const getProjects = (user_id) => (dispatch) => {
+  axios
+    .get(`http://localhost:4000/api/projects/user/${user_id}`)
+    .then((res) => {
+      dispatch({ type: GET_PROJECTS, payload: res.data });
+    });
 };
 
-export const addProject = (project) => (dispatch) => {
+export const addProject = (project, user_id) => (dispatch) => {
   axios
-    .post("http://localhost:4000/api/projects/newProject", project)
+    .post(`http://localhost:4000/api/projects/newProject/${user_id}`, project)
     .then((res) => {
       dispatch({ type: ADD_PROJECT, payload: res.data });
     });

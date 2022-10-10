@@ -18,6 +18,7 @@ function LoginForm() {
 
   const submit = (e) => {
     e.preventDefault();
+    console.log("clicking");
     if (userInfo.email === "" || userInfo.password === "") {
       setError("ALL FIELDS ARE REQUIRED");
     } else {
@@ -56,7 +57,7 @@ function LoginForm() {
           </div>
           <div>
             <h3>Dont have an account!</h3>
-            <Link to="/signup">Signup</Link>
+            <Link to="/Signup">Signup</Link>
             <button id="submit">Login</button>
           </div>
         </form>

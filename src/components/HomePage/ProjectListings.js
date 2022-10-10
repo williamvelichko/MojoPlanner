@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getProjects } from "../reducer/actions";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import jwtDecode from "jwt-decode";
 
 function ProjectListings(props) {
   const { projects, dispatch } = props;
+  const jwt = jwtDecode(localStorage.getItem("token"));
+
   useEffect(() => {
-    dispatch(getProjects());
+    dispatch(getProjects(jwt.subject));
   }, []);
 
   return (

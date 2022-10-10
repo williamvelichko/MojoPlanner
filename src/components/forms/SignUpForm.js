@@ -63,7 +63,7 @@ function SignUpForm() {
           </div>
           <div>
             <h3>Already have an account!</h3>
-            <Link to="/login">Login</Link>
+            <Link to="/Login">Login</Link>
             <button id="submit">Create Account!</button>
           </div>
         </form>

@@ -5,11 +5,14 @@ import { addProject } from "../reducer/actions";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-
+import jwtDecode from "jwt-decode";
 function AddProject(props) {
   const { push } = useHistory();
   const params = useParams();
   const { dispatch, editing } = props;
+
+  const jwt = jwtDecode(localStorage.getItem("token"));
+
   const [project, setProject] = useState({
     project_name: "",
     project_leader: "",
@@ -24,7 +27,7 @@ function AddProject(props) {
     if (project.project_name === "" || project.project_leader === "") {
       setError("ALL FIELDS ARE REQUIRED!");
     } else {
-      dispatch(addProject(project));
+      dispatch(addProject(project, jwt.subject));
       push("/projectListings");
     }
   };

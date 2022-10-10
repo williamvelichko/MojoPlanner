@@ -8,6 +8,7 @@ import styled from "styled-components";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import EditIcon from "@mui/icons-material/Edit";
+
 function SingleProject(props) {
   const [result, setResult] = useState([]);
   const { projects, dispatch, location } = props;

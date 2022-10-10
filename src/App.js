@@ -12,6 +12,7 @@ import EditProject from "./components/forms/EditProject";
 import EditTask from "./components/forms/EditTask";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Logout from "./components/forms/Logout";
+import { Login } from "@mui/icons-material";
 
 function App() {
   return (
@@ -21,15 +22,12 @@ function App() {
       </div>
       <div className="route_container">
         <Switch>
-          <Route exact path="/landingpage" component={LandingPage} />
-          <Route exact path="/" component={LandingPage} />
           <ProtectedRoute path="/projectListings" component={ProjectListings} />
           <ProtectedRoute
             path={`/singleProject/:id`}
             component={SingleProject}
           />
-          <Route path="/signup" component={SignUpForm} />
-          <Route path="/login" component={LoginForm} />
+
           <ProtectedRoute path="/logout" component={Logout} />
           <ProtectedRoute path="/addtask/:project_id" component={AddTask} />
           <ProtectedRoute path="/addproject" component={AddProject} />
@@ -38,6 +36,11 @@ function App() {
             path="/editTask/:project_id/:task_id"
             component={EditTask}
           />
+          <Route path="/Signup" component={SignUpForm} />
+
+          <Route path="/Login" component={LoginForm} />
+          <Route path="/landingPage" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
         </Switch>
       </div>
     </div>
