@@ -27,6 +27,7 @@ function LoginForm() {
         .then((resp) => {
           localStorage.setItem("token", resp.data.token);
           push("/projectListings");
+          window.location.reload();
         })
         .catch((err) => {
           setError("Wrong Username or Password");

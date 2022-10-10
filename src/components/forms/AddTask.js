@@ -29,6 +29,7 @@ function AddTask(props) {
     } else {
       dispatch(addTask(task, params.project_id));
       push(`/singleProject/${params.project_id}`);
+      window.location.reload();
     }
   };
 

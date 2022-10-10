@@ -6,6 +6,7 @@ function Logout() {
   useEffect(() => {
     localStorage.removeItem("token");
     push("/LandingPage");
+    window.location.reload();
   }, []);
   return <div></div>;
 }

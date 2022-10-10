@@ -30,6 +30,7 @@ function SignUpForm() {
               console.log(resp.data);
               localStorage.setItem("token", resp.data.token);
               push("/projectListings");
+              window.location.reload();
             })
             .catch((err) => console.log(err));
           push("/projectListings");
