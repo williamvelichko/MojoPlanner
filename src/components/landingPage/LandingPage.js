@@ -1,7 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import image from "../../images/webDevelopmentBackground.ed90dd85.png";
+import { useAuth0 } from "@auth0/auth0-react";
+
 function LandingPage() {
+  const { user, getAccessTokenSilently } = useAuth0();
+  const token = () => {
+    getAccessTokenSilently();
+  };
+  console.log(token);
+
   return (
     <LandingContainer>
       <Container1>

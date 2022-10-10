@@ -27,8 +27,8 @@ function App() {
             path={`/singleProject/:id`}
             component={SingleProject}
           />
-          {/* <Route path="/signup" component={SignUpForm} />
-          <Route path="/login" component={LoginForm} /> */}
+          <Route path="/signup" component={SignUpForm} />
+          <Route path="/login" component={LoginForm} />
           <ProtectedRoute path="/addtask/:project_id" component={AddTask} />
           <ProtectedRoute path="/addproject" component={AddProject} />
           <ProtectedRoute path="/editProject/:id" component={EditProject} />

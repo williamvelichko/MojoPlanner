@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 function Header() {
-  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  // const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  const isAuthenticated = localStorage.getItem("token");
   return (
     <HeaderMain>
       <Logo>
@@ -14,29 +15,30 @@ function Header() {
       {!isAuthenticated && (
         <NavBar>
           <h3>
-            {/* <Link className="link1" to="/Login">
-            Login
-          </Link> */}
-            <button className="link1" onClick={() => loginWithRedirect()}>
+            <Link className="link1" to="/Login">
+              Login
+            </Link>
+            {/* <button className="link1" onClick={() => loginWithRedirect()}>
               <p>Login/Signup</p>
-            </button>
+            </button> */}
           </h3>
-          {/* <h3>
+          <h3>
             <Link className="link2" to="/Signup">
               Create Account
             </Link>
-          </h3> */}
+          </h3>
         </NavBar>
       )}
       {isAuthenticated && (
         <NavBar>
           <h3>
-            <button
+            {/* <button
               className="link1"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
               Logout
-            </button>
+            </button> */}
+            <button>Logout</button>
           </h3>
           <Link className="link2" to="/projectListings">
             ProjectListings
