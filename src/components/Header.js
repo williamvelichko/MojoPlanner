@@ -38,7 +38,7 @@ function Header() {
             >
               Logout
             </button> */}
-            <button>Logout</button>
+            <Link to="/logout">Logout</Link>
           </h3>
           <Link className="link2" to="/projectListings">
             ProjectListings

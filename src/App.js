@@ -11,6 +11,7 @@ import AddTask from "./components/forms/AddTask";
 import EditProject from "./components/forms/EditProject";
 import EditTask from "./components/forms/EditTask";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Logout from "./components/forms/Logout";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/login" component={LoginForm} />
+          <ProtectedRoute path="/logout" component={Logout} />
           <ProtectedRoute path="/addtask/:project_id" component={AddTask} />
           <ProtectedRoute path="/addproject" component={AddProject} />
           <ProtectedRoute path="/editProject/:id" component={EditProject} />
