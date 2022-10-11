@@ -21,7 +21,7 @@ function SignUpForm() {
   const submit = (e) => {
     e.preventDefault();
     if (userInfo.email === "" || userInfo.password === "") {
-      setError("ALL FIELDS ARE REQUIRED");
+      setError("ALL FIELDS ARE REQUIRED!");
     } else {
       axios
         .post("http://localhost:4000/api/auth/register", userInfo)
@@ -47,9 +47,12 @@ function SignUpForm() {
   return (
     <MainContainer>
       <Form onSubmit={submit}>
-        <h2>Create Account</h2>
+        <div className="title">
+          <h2>Create Account</h2>
+        </div>
         <Fields>
           {/* <label>Email:</label> */}
+
           <input
             type="email"
             name="email"
@@ -57,6 +60,7 @@ function SignUpForm() {
             value={userInfo.email}
             onChange={handleChange}
           />
+
           {/* <label>Password:</label> */}
           <input
             type="password"
@@ -66,14 +70,21 @@ function SignUpForm() {
             onChange={handleChange}
           />
         </Fields>
-        <div>
-          <button id="submit">Create Account!</button>
-        </div>
-        <Link to="/Login">
-          <h3>Already have an account!</h3>
-        </Link>
+
+        <ButtonDiv>
+          <button id="submit">
+            <h3>Create Account!</h3>
+          </button>
+        </ButtonDiv>
+        <ErrorMessage>
+          <p>{error}</p>
+        </ErrorMessage>
+        <LinkDiv>
+          <Link className="link" to="/Login">
+            <h3>Already have an account!</h3>
+          </Link>
+        </LinkDiv>
       </Form>
-      <p>{error}</p>
     </MainContainer>
   );
 }
@@ -89,8 +100,23 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-contents: center;
-  width: 60%;
+  background-color: #3e707a;
+  width: 50%;
   margin: auto;
+  margin-top: 70px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  .title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    h2 {
+      font-family: fira sans;
+      color: white;
+      font-weight: 20;
+    }
+  }
 `;
 
 const Fields = styled.div`
@@ -99,16 +125,82 @@ const Fields = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  margin-top: 30px;
   input {
     width: 60%;
     margin: 15px;
     padding: 10px;
     border: none;
     border-bottom: 1px solid white;
-    background-color: #244f58;
+    background-color: #3e707a;
   }
+  input::value {
+    color: white;
+  }
+  input:hover {
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
   input::placeholder {
     color: white;
     font-size: 1.2rem;
   }
+`;
+
+const ButtonDiv = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 30px 0px 30px 0px;
+  button {
+    width: 60%;
+    padding: 3px;
+    background-color: #244f58;
+    border: 1px solid transparent;
+
+    h3 {
+      font-size: 1.1rem;
+      color: white;
+      font-weight: 20;
+    }
+  }
+  button: hover {
+    border: 1px solid white;
+    transition-duration: 0.2s;
+  }
+`;
+
+const LinkDiv = styled.div`
+  display: flex;
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+  .link {
+    text-decoration: none;
+    width: 100%;
+    //background-color: #257dae;
+    background-color: #244f58;
+    h3 {
+      font-family: fira sans;
+      color: white;
+      font-weight: 20;
+    }
+  }
+`;
+
+const ErrorMessage = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  p {
+    font-family: fira sans;
+    color: #90e0ef;
+    font-weight: 10;
+    font-size: 1.3rem;
+
+    margin: 0;
+  }
+  margin-bottom: 10px;
 `;
