@@ -41,14 +41,14 @@ function LoginForm() {
         <form onSubmit={submit}>
           <div className="fields">
             <h1>Login</h1>
-            <label>Email:</label>
+            {/* <label>Email:</label> */}
             <input
               type="email"
               name="email"
               value={userInfo.email}
               onChange={handleChange}
             />
-            <label>Password:</label>
+            {/* <label>Password:</label> */}
             <input
               type="password"
               name="password"

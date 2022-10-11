@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+
+import styled from "styled-components";
+
 function SignUpForm() {
   const { push } = useHistory();
 
@@ -42,36 +45,70 @@ function SignUpForm() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <form onSubmit={submit}>
-          <div className="fields">
-            <h1>Create Account</h1>
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={userInfo.email}
-              onChange={handleChange}
-            />
-            <label>Password:</label>
-            <input
-              type="password"
-              name="password"
-              value={userInfo.password}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <h3>Already have an account!</h3>
-            <Link to="/Login">Login</Link>
-            <button id="submit">Create Account!</button>
-          </div>
-        </form>
-        <p>{error}</p>
-      </div>
-    </div>
+    <MainContainer>
+      <Form onSubmit={submit}>
+        <h2>Create Account</h2>
+        <Fields>
+          {/* <label>Email:</label> */}
+          <input
+            type="email"
+            name="email"
+            placeholder="Email:"
+            value={userInfo.email}
+            onChange={handleChange}
+          />
+          {/* <label>Password:</label> */}
+          <input
+            type="password"
+            name="password"
+            placeholder="Password:"
+            value={userInfo.password}
+            onChange={handleChange}
+          />
+        </Fields>
+        <div>
+          <button id="submit">Create Account!</button>
+        </div>
+        <Link to="/Login">
+          <h3>Already have an account!</h3>
+        </Link>
+      </Form>
+      <p>{error}</p>
+    </MainContainer>
   );
 }
 
 export default SignUpForm;
+
+const MainContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-contents: center;
+  width: 60%;
+  margin: auto;
+`;
+
+const Fields = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  input {
+    width: 60%;
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: #244f58;
+  }
+  input::placeholder {
+    color: white;
+    font-size: 1.2rem;
+  }
+`;
