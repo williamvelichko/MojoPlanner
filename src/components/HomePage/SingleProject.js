@@ -19,6 +19,7 @@ function SingleProject(props) {
     axios
       .get(`https://mojoplanner.herokuapp.com/api/projects/${params.id}`)
       .then((res) => {
+        console.log(res.data);
         setResult(res.data);
       });
   }, []);
