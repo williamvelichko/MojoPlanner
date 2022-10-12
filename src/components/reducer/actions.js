@@ -11,7 +11,7 @@ export const DELETE_TASK = "DELETE_TASK";
 
 export const getProjects = (user_id) => (dispatch) => {
   axios
-    .get(`http://localhost:4000/api/projects/user/${user_id}`)
+    .get(`https://mojoplanner.herokuapp.com/api/projects/user/${user_id}`)
     .then((res) => {
       dispatch({ type: GET_PROJECTS, payload: res.data });
     });
@@ -19,7 +19,10 @@ export const getProjects = (user_id) => (dispatch) => {
 
 export const addProject = (project, user_id) => (dispatch) => {
   axios
-    .post(`http://localhost:4000/api/projects/newProject/${user_id}`, project)
+    .post(
+      `https://mojoplanner.herokuapp.com/api/projects/newProject/${user_id}`,
+      project
+    )
     .then((res) => {
       dispatch({ type: ADD_PROJECT, payload: res.data });
     });
@@ -28,7 +31,7 @@ export const addProject = (project, user_id) => (dispatch) => {
 export const updateProject = (pr) => (dispatch) => {
   axios
     .put(
-      `http://localhost:4000/api/projects/updateProject/${pr.project_id}`,
+      `https://mojoplanner.herokuapp.com/api/projects/updateProject/${pr.project_id}`,
       pr
     )
     .then((res) => {
@@ -38,7 +41,7 @@ export const updateProject = (pr) => (dispatch) => {
 
 export const deleteProject = (project_id) => (dispatch) => {
   axios
-    .delete(`http://localhost:4000/api/projects/${project_id}`)
+    .delete(`https://mojoplanner.herokuapp.com/api/projects/${project_id}`)
     .then((res) => {
       dispatch({ type: DELETE_PROJECT, payload: project_id });
     });
@@ -46,7 +49,10 @@ export const deleteProject = (project_id) => (dispatch) => {
 
 export const addTask = (task, project_id) => (dispatch) => {
   axios
-    .post(`http://localhost:4000/api/projects/newTask/${project_id}`, task)
+    .post(
+      `https://mojoplanner.herokuapp.com/api/projects/newTask/${project_id}`,
+      task
+    )
     .then((res) => {
       dispatch({ type: ADD_TASK, payload: res.data });
     });
@@ -54,7 +60,10 @@ export const addTask = (task, project_id) => (dispatch) => {
 
 export const editTask = (task) => (dispatch) => {
   axios
-    .put(`http://localhost:4000/api/projects/task/${task.task_id}`, task)
+    .put(
+      `https://mojoplanner.herokuapp.com/api/projects/task/${task.task_id}`,
+      task
+    )
     .then((res) => {
       dispatch({ type: EDIT_TASK, payload: res.data });
     });
@@ -62,7 +71,9 @@ export const editTask = (task) => (dispatch) => {
 
 export const deleteTask = (task_id) => (dispatch) => {
   axios
-    .delete(`http://localhost:4000/api/projects/deleteTask/${task_id}`)
+    .delete(
+      `https://mojoplanner.herokuapp.com/api/projects/deleteTask/${task_id}`
+    )
     .then((res) => {
       dispatch({ type: DELETE_TASK, payload: task_id });
     });

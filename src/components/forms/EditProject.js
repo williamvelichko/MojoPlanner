@@ -22,7 +22,7 @@ function EditProject(props) {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/projects`).then((res) => {
+    axios.get(`https://mojoplanner.herokuapp.com/api/projects`).then((res) => {
       res.data.map((pr) => {
         if (pr.project_id == params.id) {
           setProject(pr);

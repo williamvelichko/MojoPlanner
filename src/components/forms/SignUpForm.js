@@ -24,11 +24,11 @@ function SignUpForm() {
       setError("ALL FIELDS ARE REQUIRED!");
     } else {
       axios
-        .post("http://localhost:4000/api/auth/register", userInfo)
+        .post("https://mojoplanner.herokuapp.com/api/auth/register", userInfo)
         .then((resp) => {
           setUserInfo(resp.data);
           axios
-            .post("http://localhost:4000/api/auth/login", userInfo)
+            .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
             .then((resp) => {
               console.log(resp.data);
               localStorage.setItem("token", resp.data.token);

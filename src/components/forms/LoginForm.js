@@ -24,7 +24,7 @@ function LoginForm() {
       setError("ALL FIELDS ARE REQUIRED");
     } else {
       axios
-        .post("http://localhost:4000/api/auth/login", userInfo)
+        .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
         .then((resp) => {
           localStorage.setItem("token", resp.data.token);
           push("/projectListings");

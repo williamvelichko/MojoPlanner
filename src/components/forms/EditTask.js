@@ -22,7 +22,9 @@ function EditTask(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/projects/task/${params.task_id}`)
+      .get(
+        `https://mojoplanner.herokuapp.com/api/projects/task/${params.task_id}`
+      )
       .then((res) => {
         setTask(res.data[0]);
       });

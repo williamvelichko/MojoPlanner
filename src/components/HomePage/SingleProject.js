@@ -16,9 +16,11 @@ function SingleProject(props) {
   const { push } = useHistory();
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/projects/${params.id}`).then((res) => {
-      setResult(res.data);
-    });
+    axios
+      .get(`https://mojoplanner.herokuapp.com/api/projects/${params.id}`)
+      .then((res) => {
+        setResult(res.data);
+      });
   }, []);
 
   const deletePR = (e) => {
