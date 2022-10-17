@@ -30,7 +30,11 @@ function ProjectListings(props) {
         {projects.map((pr) => {
           return (
             // <ProjectContainer>
-            <Link className="link" to={`/singleProject/${pr.project_id}`}>
+            <Link
+              key={pr.project_id}
+              className="link"
+              to={`/singleProject/${pr.project_id}`}
+            >
               <ProjectSection>
                 <div className="items">
                   <h3>Project:</h3>

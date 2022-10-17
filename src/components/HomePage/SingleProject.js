@@ -40,7 +40,7 @@ function SingleProject(props) {
       {result.map((pr) => {
         return (
           //<MainContainer>
-          <MainContainer>
+          <MainContainer key={pr.project_id}>
             <div>
               <ProjectName>
                 <div className="names">
@@ -58,7 +58,7 @@ function SingleProject(props) {
               </ProjectName>
               {pr.project_tasks.map((tsk) => {
                 return (
-                  <Information>
+                  <Information key={tsk.task_id}>
                     <div className="eachTask">
                       <div className="text">
                         <h5>Title:</h5>
