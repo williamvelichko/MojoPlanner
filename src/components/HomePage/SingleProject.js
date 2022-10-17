@@ -32,7 +32,7 @@ function SingleProject(props) {
   const deleteTsk = (taskID) => {
     dispatch(deleteTask(taskID));
     push(`/singleProject/${params.id}`);
-    window.location.reload();
+    //window.location.reload();
   };
 
   return (
