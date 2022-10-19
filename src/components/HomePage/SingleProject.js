@@ -16,7 +16,6 @@ function SingleProject(props) {
   const params = useParams();
   const { push } = useHistory();
 
-  console.log(projects);
   useEffect(() => {
     axios
       .get(`https://mojoplanner.herokuapp.com/api/projects/${params.id}`)
@@ -33,8 +32,10 @@ function SingleProject(props) {
   };
   const deleteTsk = (taskID) => {
     dispatch(deleteTask(taskID));
-    push(`/singleProject/${params.id}`);
-    //window.location.reload();
+    // push(`/singleProject/${params.id}`);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   return (
