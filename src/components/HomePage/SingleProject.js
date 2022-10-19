@@ -11,10 +11,12 @@ import EditIcon from "@mui/icons-material/Edit";
 
 function SingleProject(props) {
   const [result, setResult] = useState([]);
+  const [noTasks, SetNoTasks] = useState(false);
   const { projects, dispatch, location } = props;
   const params = useParams();
   const { push } = useHistory();
 
+  console.log(projects);
   useEffect(() => {
     axios
       .get(`https://mojoplanner.herokuapp.com/api/projects/${params.id}`)
@@ -56,6 +58,11 @@ function SingleProject(props) {
                   </Link>
                 </div>
               </ProjectName>
+              {pr.project_tasks.length === 0 && (
+                <NoTask>
+                  <h3>No Current Tasks</h3>
+                </NoTask>
+              )}
               {pr.project_tasks.map((tsk) => {
                 return (
                   <Information key={tsk.task_id}>
@@ -94,6 +101,7 @@ function SingleProject(props) {
           </MainContainer>
         );
       })}
+
       <EndButtons>
         <Link className="editProject" to={`/editProject/${params.id}`}>
           <p>
@@ -312,5 +320,19 @@ const EndButtons = styled.div`
   }
   .deleteProject {
     background-color: #e46363;
+  }
+`;
+
+const NoTask = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  h3 {
+    color: red;
+    font-size: 1.4rem;
+    font-family: fira sans;
+    border: 2px solid red;
+    padding: 15px;
   }
 `;

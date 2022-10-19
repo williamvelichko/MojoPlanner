@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -14,6 +14,8 @@ function ProjectListings(props) {
     dispatch(getProjects(jwt.subject));
   }, []);
 
+  const [emptyArray, SetEmptyArray] = useState(false);
+
   return (
     <ListingContainer>
       <Bar>
@@ -26,6 +28,11 @@ function ProjectListings(props) {
           </Link>
         </div>
       </Bar>
+      {projects.length === 0 && (
+        <NoProjects>
+          <h3>No Current Projects</h3>
+        </NoProjects>
+      )}
       <Box>
         {projects.map((pr) => {
           return (
@@ -181,5 +188,17 @@ const ProjectSection = styled.div`
     padding: 5px;
     margin-right: 20px;
     font-weight: bold;
+  }
+`;
+
+const NoProjects = styled.div`
+  display: flex;
+  justify-content: center;
+  h3 {
+    color: red;
+    font-size: 1.4rem;
+    font-family: fira sans;
+    border: 2px solid red;
+    padding: 15px;
   }
 `;
