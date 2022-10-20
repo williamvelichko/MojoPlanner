@@ -92,12 +92,49 @@ const NavBar = styled.div`
   // }
   .link1 {
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #ffffff;
+
+    background-image: linear-gradient(
+      to right,
+      #257dae,
+      #257dae 50%,
+      #ffffff 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.4s ease-in-out;
   }
+  .link1:hover {
+    background-position: 0;
+  }
+
   .link2 {
     text-decoration: none;
     font-size: 1.5rem;
     color: #ffffff;
+
+    background-image: linear-gradient(
+      to right,
+      #257dae,
+      #257dae 50%,
+      #ffffff 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.4s ease-in-out;
+  }
+  .link2:hover {
+    background-position: 0;
   }
 `;
