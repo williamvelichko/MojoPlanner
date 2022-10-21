@@ -92,7 +92,7 @@ const NavBar = styled.div`
   // }
   .link1 {
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #ffffff;
 
     background-image: linear-gradient(
@@ -116,7 +116,7 @@ const NavBar = styled.div`
 
   .link2 {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #ffffff;
 
     background-image: linear-gradient(

@@ -71,7 +71,7 @@ function LoginForm() {
         </ErrorMessage>
         <LinkDiv>
           <Link className="link" to="/Signup">
-            <h3>Dont have an account!</h3>
+            <h3>Don't have an account?</h3>
           </Link>
         </LinkDiv>
       </Form>
