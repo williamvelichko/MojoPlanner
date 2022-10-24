@@ -35,6 +35,7 @@ function ProjectListings(props) {
       )}
       <Box>
         {projects.map((pr) => {
+          console.log(pr.project_tasks.length);
           return (
             // <ProjectContainer>
             <Link
@@ -43,15 +44,26 @@ function ProjectListings(props) {
               to={`/singleProject/${pr.project_id}`}
             >
               <ProjectSection>
-                <div className="items">
-                  <h3>Project:</h3>
-                  <h4>{pr.project_name}</h4>
-                </div>
+                <Item1>
+                  <div className="part1">
+                    <h3>Project:</h3>
+                  </div>
+                  <div className="part2">
+                    <h4>{pr.project_name}</h4>
+                  </div>
+                </Item1>
 
-                <div className="items">
-                  <h3>Project-Leader:</h3>
-                  <h4>{pr.project_leader}</h4>
-                </div>
+                <Item2>
+                  <div className="part1">
+                    <h3>Project-Leader:</h3>
+                    <p>
+                      Tasks: <p>{pr.project_tasks.length}</p>
+                    </p>
+                  </div>
+                  <div className="part2">
+                    <h4>{pr.project_leader}</h4>
+                  </div>
+                </Item2>
               </ProjectSection>
             </Link>
             // </ProjectContainer>
@@ -161,33 +173,86 @@ const ProjectSection = styled.div`
   background-color: #d9d9d9;
   border-radius: 5px;
   margin-bottom: 30px;
-  :hover {
-    background-color: grey;
-  }
+  // :hover {
+  //   background-color: grey;
+  // }
 
-  .items {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 40%;
-  }
+  // .items1 {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   width: 40%;
+  // }
+  // .items2 {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   width: 40%;
+  // }
 
+  // h3 {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   text-align: center;
+  //   font-size: 1rem;
+  //   padding: 15px;
+  //   margin: 0;
+  //   width: 50%;
+  // }
+  // h4 {
+  //   font-size: 1.3rem;
+  //   padding: 5px;
+  //   margin-right: 20px;
+  //   font-weight: bold;
+  // }
+`;
+
+const Item1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  //justify-content: space-between;
+  //align-items: center;
+  width: 40%;
+  background-color: #739eb0;
   h3 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: center;
     font-size: 1rem;
-    padding: 15px;
-    margin: 0;
-    width: 50%;
+    color: #ffffff;
   }
   h4 {
     font-size: 1.3rem;
-    padding: 5px;
-    margin-right: 20px;
+    color: #ffffff;
     font-weight: bold;
+  }
+  .part1 {
+    width: 100%;
+  }
+  .part2 {
+  }
+`;
+
+const Item2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  //justify-content: space-between;
+  // align-items: center;
+  width: 60%;
+  background-color: #ffffff;
+  h3 {
+    font-size: 1rem;
+    color: #739eb0;
+  }
+  h4 {
+    font-size: 1.3rem;
+    color: #739eb0;
+    font-weight: bold;
+  }
+  .part1 {
+    height: 40%;
+  }
+  .part2 {
   }
 `;
 
