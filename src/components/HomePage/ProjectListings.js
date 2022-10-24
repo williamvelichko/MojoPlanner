@@ -251,6 +251,7 @@ const Item2 = styled.div`
   }
   .part1 {
     height: 40%;
+    displa
   }
   .part2 {
   }
