@@ -35,37 +35,45 @@ function ProjectListings(props) {
       )}
       <Box>
         {projects.map((pr) => {
-          console.log(pr.project_tasks.length);
           return (
             // <ProjectContainer>
-            <Link
-              key={pr.project_id}
-              className="link"
-              to={`/singleProject/${pr.project_id}`}
-            >
-              <ProjectSection>
-                <Item1>
-                  <div className="part1">
-                    <h3>Project:</h3>
-                  </div>
-                  <div className="part2">
-                    <h4>{pr.project_name}</h4>
-                  </div>
-                </Item1>
+            // <Link
+            //   key={pr.project_id}
+            //   className="link"
+            //   to={`/singleProject/${pr.project_id}`}
+            // >
+            <ProjectSection key={pr.project_id}>
+              <Item1>
+                <div className="part1">
+                  <h3>Project:</h3>
+                </div>
+                <div className="part2">
+                  <h4>{pr.project_name}</h4>
+                </div>
+              </Item1>
 
-                <Item2>
-                  <div className="part1">
-                    <h3>Project-Leader:</h3>
-                    <p>
-                      Tasks: <p>{pr.project_tasks.length}</p>
-                    </p>
+              <Item2>
+                <div className="part1">
+                  <h3>Project-Leader:</h3>
+                  <div className="tskAmount">
+                    <p>Tasks:</p>
+                    <p>{pr.project_tasks.length}</p>
                   </div>
-                  <div className="part2">
-                    <h4>{pr.project_leader}</h4>
+                </div>
+                <div className="part2">
+                  <h4>{pr.project_leader}</h4>
+                  <div className="button">
+                    <Link
+                      className="link"
+                      to={`/singleProject/${pr.project_id}`}
+                    >
+                      <p>View Project</p>
+                    </Link>
                   </div>
-                </Item2>
-              </ProjectSection>
-            </Link>
+                </div>
+              </Item2>
+            </ProjectSection>
+            // </Link>
             // </ProjectContainer>
           );
         })}
@@ -170,43 +178,12 @@ const ProjectSection = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: #d9d9d9;
+  //background-color: #d9d9d9;
   border-radius: 5px;
   margin-bottom: 30px;
+
   // :hover {
   //   background-color: grey;
-  // }
-
-  // .items1 {
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   width: 40%;
-  // }
-  // .items2 {
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   width: 40%;
-  // }
-
-  // h3 {
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: space-between;
-  //   text-align: center;
-  //   font-size: 1rem;
-  //   padding: 15px;
-  //   margin: 0;
-  //   width: 50%;
-  // }
-  // h4 {
-  //   font-size: 1.3rem;
-  //   padding: 5px;
-  //   margin-right: 20px;
-  //   font-weight: bold;
   // }
 `;
 
@@ -218,13 +195,17 @@ const Item1 = styled.div`
   width: 40%;
   background-color: #739eb0;
   h3 {
+    margin-left: 10px;
     font-size: 1rem;
     color: #ffffff;
   }
   h4 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: #ffffff;
     font-weight: bold;
+    //margin: 5px 0px 5px 0px;
+    display: flex;
+    justify-content: center;
   }
   .part1 {
     width: 100%;
@@ -243,17 +224,65 @@ const Item2 = styled.div`
   h3 {
     font-size: 1rem;
     color: #739eb0;
+    width: 70%;
+    margin-left: 10px;
   }
+
   h4 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: #739eb0;
     font-weight: bold;
+    width: 70%;
+    //margin: 5px 0px 5px 0px;
+    display: flex;
+    justify-content: center;
   }
   .part1 {
     height: 40%;
-    displa
+    display: flex;
+    flex-direction: row;
+
+    .tskAmount {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: row;
+      width: 30%;
+      margin: 0;
+      p {
+        color: #739eb0;
+        margin: 0;
+      }
+    }
   }
   .part2 {
+    display: flex;
+    flex-direction: row;
+
+    .button {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+
+      .link {
+        width: 50%;
+        padding: 10px;
+        background-color: #739eb0;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        :hover {
+          box-shadow: 0px 0px 3px 3px grey;
+          transition-duration: 0.2s;
+        }
+        p {
+          margin: 0;
+          color: #ffffff;
+        }
+      }
+    }
   }
 `;
 
