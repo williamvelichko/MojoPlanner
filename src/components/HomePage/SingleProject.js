@@ -47,8 +47,12 @@ function SingleProject(props) {
             <div>
               <ProjectName>
                 <div className="names">
-                  <h3>Project-Name: {pr.project_name}</h3>
-                  <h3>Project-Leader: {pr.project_leader}</h3>
+                  <div className="titles">
+                    <h3>Project-Name:</h3> <h2>{pr.project_name}</h2>
+                  </div>
+                  <div className="titles">
+                    <h3>Project-Leader:</h3> <h2>{pr.project_leader}</h2>
+                  </div>
                 </div>
 
                 <div className="addTask">
@@ -149,13 +153,27 @@ align-items: center;
   flex-direction: row;
   justify-content: space-evenly;
   width: 70%;
-  h3{
-    font-weight: 40;
-    font-family: fira sans;
-    color: #FFFFFF;
-    font-size: 1.4rem;
-    
+  .titles{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+align-items: center;
+    h3{
+      font-weight: 40;
+      font-family: fira sans;
+      color: #FFFFFF;
+      font-size: 1.2rem;
+      
+    }
+    h2{
+      font-weight: 40;
+      font-family: fira sans;
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      margin-left: 20px;
+    }
   }
+ 
 }
 .addTask{
   width: 30%;
