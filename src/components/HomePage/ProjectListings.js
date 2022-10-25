@@ -203,7 +203,7 @@ const Item1 = styled.div`
     font-size: 1.5rem;
     color: #ffffff;
     font-weight: bold;
-    //margin: 5px 0px 5px 0px;
+    margin: 0px 0px 20px 0px;
     display: flex;
     justify-content: center;
   }
@@ -233,7 +233,8 @@ const Item2 = styled.div`
     color: #739eb0;
     font-weight: bold;
     width: 70%;
-    //margin: 5px 0px 5px 0px;
+    margin: 0px 0px 20px 0px;
+    //margin-bottom: 10px;
     display: flex;
     justify-content: center;
   }
