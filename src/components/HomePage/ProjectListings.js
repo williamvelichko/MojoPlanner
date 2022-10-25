@@ -35,14 +35,7 @@ function ProjectListings(props) {
       )}
       <Box>
         {projects.map((pr) => {
-          console.log(pr);
           return (
-            // <ProjectContainer>
-            // <Link
-            //   key={pr.project_id}
-            //   className="link"
-            //   to={`/singleProject/${pr.project_id}`}
-            // >
             <ProjectSection key={pr.project_id}>
               <Item1>
                 <div className="part1">

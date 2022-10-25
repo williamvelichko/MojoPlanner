@@ -29,6 +29,9 @@ function SingleProject(props) {
     e.preventDefault();
     dispatch(deleteProject(params.id));
     push("/projectListings");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
   const deleteTsk = (taskID) => {
     dispatch(deleteTask(taskID));
