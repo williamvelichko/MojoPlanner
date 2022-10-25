@@ -35,6 +35,7 @@ function ProjectListings(props) {
       )}
       <Box>
         {projects.map((pr) => {
+          console.log(pr);
           return (
             // <ProjectContainer>
             // <Link
