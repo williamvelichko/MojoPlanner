@@ -60,7 +60,11 @@ const HeaderMain = styled.div`
   justify-content: space-between;
   font-family: Poppins;
   background-color: #244F58;
- 
+  
+  @media (max-width: 420px) {
+    //justify-content: space-evenly;
+  }
+
 
 } 
 `;
@@ -73,6 +77,13 @@ const Logo = styled.div`
   .logo {
     text-decoration: none;
     color: #ffffff;
+  }
+  @media (max-width: 420px) {
+    width: 40%;
+    margin: 0;
+    h1 {
+      font-size: 1.4rem;
+    }
   }
 `;
 
@@ -136,5 +147,15 @@ const NavBar = styled.div`
   }
   .link2:hover {
     background-position: 0;
+  }
+
+  @media (max-width: 420px) {
+    width: 50%;
+    .link1 {
+      font-size: 1rem;
+    }
+    .link2 {
+      font-size: 1rem;
+    }
   }
 `;

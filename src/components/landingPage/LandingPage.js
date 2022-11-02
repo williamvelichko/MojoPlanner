@@ -54,8 +54,8 @@ const Container1 = styled.div`
   width: 100%;
   //justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 1;
+  //position: relative;
+  //z-index: 1;
   margin-top: 30px;
 
   .image1 {
@@ -72,6 +72,25 @@ const Container1 = styled.div`
       color: #ffffff;
     }
   }
+  @media (max-width: 420px) {
+    flex-direction: column;
+    margin: 0;
+    .par1 {
+      width: 40%;
+      margin: 0;
+      width: 80%;
+      margin-top: 30px;
+      text-align: center;
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+    .image1 {
+      margin: 0;
+      margin-top: 30px;
+      width: 80%;
+    }
+  }
 `;
 
 const Container2 = styled.div`
@@ -81,8 +100,8 @@ const Container2 = styled.div`
   width: 100%;
   //justify-content: space-evenly;
   align-items: center;
-  z-index: 2;
-  top: -120px;
+  //z-index: 2;
+  //top: -120px;
   .image2 {
     margin-right: 140px;
   }
@@ -96,6 +115,26 @@ const Container2 = styled.div`
       font-family: Fira Sans;
       font-weight: 50;
       color: #ffffff;
+    }
+  }
+  @media (max-width: 420px) {
+    flex-direction: column;
+    margin: 0;
+    .par2 {
+      width: 40%;
+
+      margin: 0;
+      width: 80%;
+      margin-top: 30px;
+      text-align: center;
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+    .image2 {
+      margin: 0;
+      margin-top: 30px;
+      width: 80%;
     }
   }
 `;
