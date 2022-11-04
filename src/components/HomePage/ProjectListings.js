@@ -148,7 +148,17 @@ font-size: 1.2rem;
 }
   }
 }
-
+@media (max-width: 420px){
+  h2{
+    font-size: 1.5rem;
+  }
+  .button{
+    width: 40%;
+    p{
+      font-size: 1rem;
+    }
+  }
+}
 `;
 
 const Box = styled.div`
@@ -277,6 +287,12 @@ const Item2 = styled.div`
           color: #ffffff;
         }
       }
+    }
+  }
+  @media (max-width: 420px) {
+    .link {
+      width: 30%;
+      background-color: FFFFFF;
     }
   }
 `;
