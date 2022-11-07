@@ -100,6 +100,11 @@ const MainContainer = styled.div`
     font-weight: 30;
     font-size: 1.8rem;
   }
+  @media (max-width: 420px) {
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
 `;
 const Form = styled.form`
   display: flex;
@@ -133,6 +138,15 @@ const Form = styled.form`
         border: 2px solid #257dae;
         box-shadow: 0px 0px 1px 1px #257dae;
         transition-duration: 0.2s;
+      }
+    }
+  }
+  @media (max-width: 420px) {
+    width: 75%;
+    padding: 10px;
+    .category {
+      label {
+        font-size: 1rem;
       }
     }
   }
@@ -177,5 +191,14 @@ const Button = styled.div`
   }
   .cancel {
     background-color: #e46363;
+  }
+  @media (max-width: 420px) {
+    button {
+      width: 40%;
+      height: 6.5vh;
+      h4 {
+        font-size: 1rem;
+      }
+    }
   }
 `;

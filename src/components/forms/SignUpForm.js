@@ -117,6 +117,9 @@ const Form = styled.form`
       font-weight: 20;
     }
   }
+  @media (max-width: 420px) {
+    width: 80%;
+  }
 `;
 
 const Fields = styled.div`
