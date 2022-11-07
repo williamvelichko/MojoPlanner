@@ -93,6 +93,9 @@ const ListingContainer = styled.div`
     text-decoration: none;
     color: black;
   }
+  @media (max-width: 420px) {
+    width: 95%;
+  }
 `;
 
 const Bar = styled.div`
@@ -136,6 +139,7 @@ color: #FFFFFF
     box-shadow: 0px 0px 3px 3px grey;
     transition-duration: 0.2s;
   }
+ 
 
 p{
   display: flex;
@@ -150,13 +154,18 @@ font-size: 1.2rem;
 }
 @media (max-width: 420px){
   h2{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .button{
+
     width: 40%;
+
+    .link{
+      height 5vh;
     p{
       font-size: 1rem;
     }
+  }
   }
 }
 `;
@@ -214,7 +223,10 @@ const Item1 = styled.div`
   .part1 {
     width: 100%;
   }
-  .part2 {
+  @media (max-width: 420px) {
+    h4 {
+      font-size: 1.1rem;
+    }
   }
 `;
 
@@ -273,8 +285,8 @@ const Item2 = styled.div`
       text-align: center;
 
       .link {
-        width: 50%;
-        padding: 10px;
+        width: 80%;
+        padding: 5px;
         background-color: #739eb0;
         border-radius: 5px;
         border: 1px solid transparent;
@@ -288,11 +300,20 @@ const Item2 = styled.div`
         }
       }
     }
+    @media (max-width: 420px) {
+      .link {
+        padding: 0;
+        //margin: 0px 10px 0px 10px;
+        p {
+          font-size: 0.5rem;
+          margin: 0;
+        }
+      }
+    }
   }
   @media (max-width: 420px) {
-    .link {
-      width: 30%;
-      background-color: FFFFFF;
+    h4 {
+      font-size: 1.1rem;
     }
   }
 `;
