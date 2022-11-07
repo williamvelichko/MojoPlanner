@@ -42,7 +42,7 @@ function SingleProject(props) {
   };
 
   return (
-    <div>
+    <OverContainer>
       {result.map((pr) => {
         return (
           //<MainContainer>
@@ -61,7 +61,8 @@ function SingleProject(props) {
                 <div className="addTask">
                   <Link className="button" to={`/addTask/${pr.project_id}`}>
                     <p>
-                      Add Task <AddCircleOutlineIcon />
+                      Add Task{" "}
+                      <AddCircleOutlineIcon sx={{ fontSize: "20px" }} />
                     </p>
                   </Link>
                 </div>
@@ -90,7 +91,7 @@ function SingleProject(props) {
                         to={`/editTask/${pr.project_id}/${tsk.task_id}`}
                       >
                         <p>
-                          Edit Task <EditIcon />
+                          Edit Task <EditIcon sx={{ fontSize: "20px" }} />
                         </p>
                       </Link>
                       <button
@@ -98,7 +99,8 @@ function SingleProject(props) {
                         onClick={() => deleteTsk(tsk.task_id)}
                       >
                         <p>
-                          Task Finished <CheckCircleOutlineIcon />
+                          Task Finished{" "}
+                          <CheckCircleOutlineIcon sx={{ fontSize: "20px" }} />
                         </p>
                       </button>
                     </div>
@@ -113,17 +115,17 @@ function SingleProject(props) {
       <EndButtons>
         <Link className="editProject" to={`/editProject/${params.id}`}>
           <p>
-            Edit Project <EditIcon />
+            Edit Project <EditIcon sx={{ fontSize: "20px" }} />
           </p>
         </Link>
 
         <button className="deleteProject" onClick={deletePR}>
           <p>
-            Delete Project <CheckCircleOutlineIcon />
+            Delete Project <CheckCircleOutlineIcon sx={{ fontSize: "20px" }} />
           </p>
         </button>
       </EndButtons>
-    </div>
+    </OverContainer>
   );
 }
 
@@ -134,6 +136,12 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(SingleProject);
+
+const OverContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
 
 const MainContainer = styled.div`
   display: flex;
@@ -177,6 +185,23 @@ align-items: center;
     }
   }
  
+
+@media(max-width: 420px){
+  width: 80%;
+.titles{
+  width: 50%;
+  justify-content: none;
+  
+h3{
+  font-size: 0.5rem;
+}
+h2{
+  
+  font-size: 0.7rem;
+  margin-left: 6px;
+}
+}
+}
 }
 .addTask{
   width: 30%;
@@ -213,6 +238,17 @@ align-items: center;
      color: #FFFFFF
      
    }
+  }
+  @media(max-width: 420px){
+    width: 20%;
+  .button{
+    width: 100%;
+    height: 4vh;
+    p{
+      width: 90%;
+      font-size: 0.6rem;
+    }
+  }
   }
 }
 `;
@@ -256,6 +292,23 @@ const Information = styled.div`
         overflow-wrap: break-word;
       }
     }
+    @media (max-width: 420px) {
+      padding: 15px;
+      .text {
+        margin: 0;
+
+        .taskInfo {
+          height: 10vh;
+        }
+        h5 {
+          font-size: 1rem;
+        }
+        h4 {
+          font-size: 1rem;
+          margin-left: 5px;
+        }
+      }
+    }
   }
 
   .taskButtons {
@@ -297,12 +350,23 @@ const Information = styled.div`
     .deleteTask {
       background-color: #e46363;
     }
+    @media (max-width: 420px) {
+      .editTask,
+      .deleteTask {
+        width: 80%;
+        height: 5.5vh;
+        p {
+          width: 90%;
+          font-size: 0.6rem;
+        }
+      }
+    }
   }
 `;
 
 const EndButtons = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 20px 0px 20px 0px;
   position: fixed;
   bottom: 0%;
   opacity: 1;
@@ -342,6 +406,17 @@ const EndButtons = styled.div`
   }
   .deleteProject {
     background-color: #e46363;
+  }
+
+  @media (max-width: 420px) {
+    .editProject,
+    .deleteProject {
+      width: 30%;
+      p {
+        font-size: 0.7rem;
+        width: 90%;
+      }
+    }
   }
 `;
 
