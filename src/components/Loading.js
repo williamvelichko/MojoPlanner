@@ -1,7 +1,7 @@
 import React from "react";
-
-function Loading() {
-  return <h3>Loading........</h3>;
+import ClipLoader from "react-spinners/ClipLoader";
+function Loading(props) {
+  return <ClipLoader color={"#FFFFFF"} loading={props.loading} size={150} />;
 }
 
 export default Loading;

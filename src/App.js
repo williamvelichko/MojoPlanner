@@ -12,17 +12,36 @@ import EditProject from "./components/forms/EditProject";
 import EditTask from "./components/forms/EditTask";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Logout from "./components/forms/Logout";
-import { Login } from "@mui/icons-material";
+import React, { useState, useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+import Loading from "./components/Loading";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 400);
+  }, []);
+
   return (
     <div className="App">
       <div className="Header">
         <Header />
       </div>
+
       <div className="route_container">
         <Switch>
+          {/* {loading ? (
+            <Loading />
+          ) : ( */}
           <ProtectedRoute path="/projectListings" component={ProjectListings} />
+
+          {/* {loading ? (
+            <Loading />
+          ) : ( */}
           <ProtectedRoute
             path={`/singleProject/:id`}
             component={SingleProject}
@@ -36,10 +55,21 @@ function App() {
             path="/editTask/:project_id/:task_id"
             component={EditTask}
           />
-          <Route path="/Signup" component={SignUpForm} />
-
-          <Route path="/Login" component={LoginForm} />
-          <Route path="/landingPage" component={LandingPage} />
+          {loading ? (
+            <Loading loading={loading} />
+          ) : (
+            <Route path="/Signup" component={SignUpForm} />
+          )}
+          {loading ? (
+            <Loading />
+          ) : (
+            <Route path="/Login" component={LoginForm} />
+          )}
+          {loading ? (
+            <Loading loading={loading} />
+          ) : (
+            <Route path="/landingPage" component={LandingPage} />
+          )}
           <Route exact path="/" component={LandingPage} />
         </Switch>
       </div>

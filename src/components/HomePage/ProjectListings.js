@@ -5,13 +5,19 @@ import styled from "styled-components";
 import { getProjects } from "../reducer/actions";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import jwtDecode from "jwt-decode";
+import Loading from "../Loading";
 
 function ProjectListings(props) {
   const { projects, dispatch } = props;
   const jwt = jwtDecode(localStorage.getItem("token"));
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getProjects(jwt.subject));
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 400);
   }, []);
 
   const [emptyArray, SetEmptyArray] = useState(false);
@@ -28,49 +34,59 @@ function ProjectListings(props) {
           </Link>
         </div>
       </Bar>
-      {projects.length === 0 && (
+
+      {/* {projects.length === 0 && (
         <NoProjects>
           <h3>No Current Projects</h3>
         </NoProjects>
-      )}
-      <Box>
-        {projects.map((pr) => {
-          return (
-            <ProjectSection key={pr.project_id}>
-              <Item1>
-                <div className="part1">
-                  <h3>Project:</h3>
-                </div>
-                <div className="part2">
-                  <h4>{pr.project_name}</h4>
-                </div>
-              </Item1>
+      )} */}
 
-              <Item2>
-                <div className="part1">
-                  <h3>Project-Leader:</h3>
-                  <div className="tskAmount">
-                    <p>Tasks:</p>
-                    <p>{pr.project_tasks.length}</p>
+      <Box>
+        {loading ? (
+          <Loading loading={loading} />
+        ) : projects.length === 0 ? (
+          <NoProjects>
+            <h3>No Current Projects</h3>
+          </NoProjects>
+        ) : (
+          projects.map((pr) => {
+            return (
+              <ProjectSection key={pr.project_id}>
+                <Item1>
+                  <div className="part1">
+                    <h3>Project:</h3>
                   </div>
-                </div>
-                <div className="part2">
-                  <h4>{pr.project_leader}</h4>
-                  <div className="button">
-                    <Link
-                      className="link"
-                      to={`/singleProject/${pr.project_id}`}
-                    >
-                      <p>View Project</p>
-                    </Link>
+                  <div className="part2">
+                    <h4>{pr.project_name}</h4>
                   </div>
-                </div>
-              </Item2>
-            </ProjectSection>
-            // </Link>
-            // </ProjectContainer>
-          );
-        })}
+                </Item1>
+
+                <Item2>
+                  <div className="part1">
+                    <h3>Project-Leader:</h3>
+                    <div className="tskAmount">
+                      <p>Tasks:</p>
+                      <p>{pr.project_tasks.length}</p>
+                    </div>
+                  </div>
+                  <div className="part2">
+                    <h4>{pr.project_leader}</h4>
+                    <div className="button">
+                      <Link
+                        className="link"
+                        to={`/singleProject/${pr.project_id}`}
+                      >
+                        <p>View Project</p>
+                      </Link>
+                    </div>
+                  </div>
+                </Item2>
+              </ProjectSection>
+              // </Link>
+              // </ProjectContainer>
+            );
+          })
+        )}
       </Box>
     </ListingContainer>
   );

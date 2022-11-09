@@ -8,6 +8,7 @@ import styled from "styled-components";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import EditIcon from "@mui/icons-material/Edit";
+import Loading from "../Loading";
 
 function SingleProject(props) {
   const [result, setResult] = useState([]);
@@ -16,6 +17,8 @@ function SingleProject(props) {
   const params = useParams();
   const { push } = useHistory();
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     axios
       .get(`https://mojoplanner.herokuapp.com/api/projects/${params.id}`)
@@ -23,15 +26,19 @@ function SingleProject(props) {
         console.log(res.data);
         setResult(res.data);
       });
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 400);
   }, []);
 
   const deletePR = (e) => {
     e.preventDefault();
     dispatch(deleteProject(params.id));
     push("/projectListings");
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 500);
   };
   const deleteTsk = (taskID) => {
     dispatch(deleteTask(taskID));
@@ -43,74 +50,78 @@ function SingleProject(props) {
 
   return (
     <OverContainer>
-      {result.map((pr) => {
-        return (
-          //<MainContainer>
-          <MainContainer key={pr.project_id}>
-            <div>
-              <ProjectName>
-                <div className="names">
-                  <div className="titles">
-                    <h3>Project-Name:</h3> <h2>{pr.project_name}</h2>
+      {loading ? (
+        <Loading loading={loading} />
+      ) : (
+        result.map((pr) => {
+          return (
+            //<MainContainer>
+            <MainContainer key={pr.project_id}>
+              <div>
+                <ProjectName>
+                  <div className="names">
+                    <div className="titles">
+                      <h3>Project-Name:</h3> <h2>{pr.project_name}</h2>
+                    </div>
+                    <div className="titles">
+                      <h3>Project-Leader:</h3> <h2>{pr.project_leader}</h2>
+                    </div>
                   </div>
-                  <div className="titles">
-                    <h3>Project-Leader:</h3> <h2>{pr.project_leader}</h2>
-                  </div>
-                </div>
 
-                <div className="addTask">
-                  <Link className="button" to={`/addTask/${pr.project_id}`}>
-                    <p>
-                      Add Task{" "}
-                      <AddCircleOutlineIcon sx={{ fontSize: "20px" }} />
-                    </p>
-                  </Link>
-                </div>
-              </ProjectName>
-              {pr.project_tasks.length === 0 && (
-                <NoTask>
-                  <h3>No Current Tasks</h3>
-                </NoTask>
-              )}
-              {pr.project_tasks.map((tsk) => {
-                return (
-                  <Information key={tsk.task_id}>
-                    <div className="eachTask">
-                      <div className="text">
-                        <h5>Title:</h5>
-                        <h4>{tsk.task_name}</h4>
+                  <div className="addTask">
+                    <Link className="button" to={`/addTask/${pr.project_id}`}>
+                      <p>
+                        Add Task{" "}
+                        <AddCircleOutlineIcon sx={{ fontSize: "20px" }} />
+                      </p>
+                    </Link>
+                  </div>
+                </ProjectName>
+                {pr.project_tasks.length === 0 && (
+                  <NoTask>
+                    <h3>No Current Tasks</h3>
+                  </NoTask>
+                )}
+                {pr.project_tasks.map((tsk) => {
+                  return (
+                    <Information key={tsk.task_id}>
+                      <div className="eachTask">
+                        <div className="text">
+                          <h5>Title:</h5>
+                          <h4>{tsk.task_name}</h4>
+                        </div>
+                        <div className="text">
+                          <h5>Task:</h5>
+                          <h4 className="taskInfo">{tsk.task_information}</h4>
+                        </div>
                       </div>
-                      <div className="text">
-                        <h5>Task:</h5>
-                        <h4 className="taskInfo">{tsk.task_information}</h4>
+                      <div className="taskButtons">
+                        <Link
+                          className="editTask"
+                          to={`/editTask/${pr.project_id}/${tsk.task_id}`}
+                        >
+                          <p>
+                            Edit Task <EditIcon sx={{ fontSize: "20px" }} />
+                          </p>
+                        </Link>
+                        <button
+                          className="deleteTask"
+                          onClick={() => deleteTsk(tsk.task_id)}
+                        >
+                          <p>
+                            Task Finished{" "}
+                            <CheckCircleOutlineIcon sx={{ fontSize: "20px" }} />
+                          </p>
+                        </button>
                       </div>
-                    </div>
-                    <div className="taskButtons">
-                      <Link
-                        className="editTask"
-                        to={`/editTask/${pr.project_id}/${tsk.task_id}`}
-                      >
-                        <p>
-                          Edit Task <EditIcon sx={{ fontSize: "20px" }} />
-                        </p>
-                      </Link>
-                      <button
-                        className="deleteTask"
-                        onClick={() => deleteTsk(tsk.task_id)}
-                      >
-                        <p>
-                          Task Finished{" "}
-                          <CheckCircleOutlineIcon sx={{ fontSize: "20px" }} />
-                        </p>
-                      </button>
-                    </div>
-                  </Information>
-                );
-              })}
-            </div>
-          </MainContainer>
-        );
-      })}
+                    </Information>
+                  );
+                })}
+              </div>
+            </MainContainer>
+          );
+        })
+      )}
 
       <EndButtons>
         <Link className="editProject" to={`/editProject/${params.id}`}>

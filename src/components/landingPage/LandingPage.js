@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import image from "../../images/webDevelopmentBackground.ed90dd85.png";
 import { useAuth0 } from "@auth0/auth0-react";
+import Loading from "../Loading";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function LandingPage() {
-  const { user, getAccessTokenSilently } = useAuth0();
-  const token = () => {
-    getAccessTokenSilently();
-  };
-  console.log(token);
+  // const { user, getAccessTokenSilently } = useAuth0();
+  // const token = () => {
+  //   getAccessTokenSilently();
+  // };
+  // console.log(token);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 600);
+  }, []);
 
   return (
     <LandingContainer>
+      {/* {!loading ? <ClipLoader color={"#FFFFFF"} loading={loading} size={150} /> : */}
       <Container1>
         <img
           className="image1"
