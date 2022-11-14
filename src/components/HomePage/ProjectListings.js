@@ -11,7 +11,7 @@ function ProjectListings(props) {
   const { projects, dispatch } = props;
   const jwt = jwtDecode(localStorage.getItem("token"));
   const [loading, setLoading] = useState(false);
-
+  console.log(projects);
   useEffect(() => {
     dispatch(getProjects(jwt.subject));
     setLoading(true);
@@ -34,13 +34,6 @@ function ProjectListings(props) {
           </Link>
         </div>
       </Bar>
-
-      {/* {projects.length === 0 && (
-        <NoProjects>
-          <h3>No Current Projects</h3>
-        </NoProjects>
-      )} */}
-
       <Box>
         {loading ? (
           <Loading loading={loading} />

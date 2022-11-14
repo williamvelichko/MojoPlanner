@@ -34,14 +34,7 @@ function App() {
 
       <div className="route_container">
         <Switch>
-          {/* {loading ? (
-            <Loading />
-          ) : ( */}
           <ProtectedRoute path="/projectListings" component={ProjectListings} />
-
-          {/* {loading ? (
-            <Loading />
-          ) : ( */}
           <ProtectedRoute
             path={`/singleProject/:id`}
             component={SingleProject}
