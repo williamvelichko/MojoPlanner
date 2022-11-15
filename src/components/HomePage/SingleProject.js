@@ -435,6 +435,12 @@ const EndButtons = styled.div`
       width: 25%;
     }
   }
+  @media (max-width: 820px) {
+    .editProject,
+    .deleteProject {
+      width: 35%;
+    }
+  }
 `;
 
 const NoTask = styled.div`
