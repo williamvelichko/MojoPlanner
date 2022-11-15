@@ -37,7 +37,9 @@ function EditTask(props) {
   const save = (e) => {
     e.preventDefault();
     dispatch(editTask(task));
-    push(`/singleproject/${params.project_id}`);
+    setTimeout(() => {
+      push(`/singleproject/${params.project_id}`);
+    }, 500);
   };
 
   const cancel = (e) => {

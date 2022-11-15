@@ -28,10 +28,10 @@ function AddTask(props) {
       setError("ALL FIELDS REQUIRED!");
     } else {
       dispatch(addTask(task, params.project_id));
-      push(`/singleProject/${params.project_id}`);
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 500);
+
+      setTimeout(() => {
+        push(`/singleProject/${params.project_id}`);
+      }, 500);
     }
   };
 

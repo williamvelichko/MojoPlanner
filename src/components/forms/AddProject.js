@@ -30,7 +30,7 @@ function AddProject(props) {
       dispatch(addProject(project, jwt.subject));
       setTimeout(() => {
         push("/projectListings");
-      }, 1000);
+      }, 500);
     }
   };
 

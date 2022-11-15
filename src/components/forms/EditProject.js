@@ -41,7 +41,9 @@ function EditProject(props) {
   };
   const cancel = (e) => {
     e.preventDefault();
-    push(`/singleProject/${params.id}`);
+    setTimeout(() => {
+      push(`/singleProject/${params.id}`);
+    }, 500);
   };
   return (
     <MainContainer>
