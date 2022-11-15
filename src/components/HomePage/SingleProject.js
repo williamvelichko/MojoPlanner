@@ -429,6 +429,12 @@ const EndButtons = styled.div`
       }
     }
   }
+  @media (max-width: 1000px) {
+    .editProject,
+    .deleteProject {
+      width: 25%;
+    }
+  }
 `;
 
 const NoTask = styled.div`
