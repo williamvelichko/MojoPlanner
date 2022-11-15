@@ -37,7 +37,10 @@ function EditProject(props) {
   const submit = (e) => {
     e.preventDefault();
     dispatch(updateProject(project));
-    push(`/singleProject/${params.id}`);
+
+    setTimeout(() => {
+      push(`/singleProject/${params.id}`);
+    }, 500);
   };
   const cancel = (e) => {
     e.preventDefault();
