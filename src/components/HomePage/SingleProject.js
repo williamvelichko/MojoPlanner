@@ -429,7 +429,7 @@ const EndButtons = styled.div`
       }
     }
   }
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     .editProject,
     .deleteProject {
       width: 25%;
