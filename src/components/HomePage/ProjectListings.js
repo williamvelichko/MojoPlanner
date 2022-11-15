@@ -12,8 +12,10 @@ function ProjectListings(props) {
   const jwt = jwtDecode(localStorage.getItem("token"));
   const [loading, setLoading] = useState(false);
   console.log(projects);
+  console.log(jwt.subject);
   useEffect(() => {
     dispatch(getProjects(jwt.subject));
+    //window.location.reload();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);

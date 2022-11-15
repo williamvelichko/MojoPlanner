@@ -28,7 +28,9 @@ function AddProject(props) {
       setError("ALL FIELDS ARE REQUIRED!");
     } else {
       dispatch(addProject(project, jwt.subject));
-      push("/projectListings");
+      setTimeout(() => {
+        push("/projectListings");
+      }, 1000);
     }
   };
 
