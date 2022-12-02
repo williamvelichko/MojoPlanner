@@ -13,6 +13,7 @@ function SignUpForm() {
   });
 
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -26,17 +27,20 @@ function SignUpForm() {
       axios
         .post("https://mojoplanner.herokuapp.com/api/auth/register", userInfo)
         .then((resp) => {
-          setUserInfo(resp.data);
-          axios
-            .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
-            .then((resp) => {
-              console.log(resp.data);
-              localStorage.setItem("token", resp.data.token);
-              push("/projectListings");
-              window.location.reload();
-            })
-            .catch((err) => console.log(err));
-          push("/projectListings");
+          console.log(resp);
+          //setUserInfo(resp.data);
+          setMessage(resp.data);
+
+          // axios
+          //   .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
+          //   .then((resp) => {
+          //     console.log(resp.data);
+          //     localStorage.setItem("token", resp.data.token);
+          //     push("/projectListings");
+          //     window.location.reload();
+          //   })
+          //   .catch((err) => console.log(err));
+          // push("/projectListings");
         })
         .catch((err) => {
           setError("Account Already Exists");
@@ -78,7 +82,11 @@ function SignUpForm() {
         </ButtonDiv>
         <ErrorMessage>
           <p>{error}</p>
+          <Message>{message}</Message>
         </ErrorMessage>
+        {/* <Message>
+          <p>{message}</p>
+        </Message> */}
         <LinkDiv>
           <Link className="link" to="/Login">
             <h3>Already have an account!</h3>
@@ -206,4 +214,34 @@ const ErrorMessage = styled.div`
     margin: 0;
   }
   margin-bottom: 10px;
+`;
+
+// const Message = styled.div`
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+
+//   p {
+//     border: 1px solid green;
+//     background-color: green;
+//     font-family: fira sans;
+//     padding: 10px;
+//     color: white;
+//     font-weight: 10;
+//     font-size: 1.3rem;
+
+//     margin: 0;
+//   }
+//   margin-bottom: 10px;
+// `;
+const Message = styled.p`
+  border: 1px solid green;
+  background-color: green;
+  font-family: fira sans;
+  padding: 10px;
+  color: white;
+  font-weight: 10;
+  font-size: 1.3rem;
+
+  margin: 0;
 `;

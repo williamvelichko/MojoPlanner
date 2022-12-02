@@ -15,6 +15,7 @@ import Logout from "./components/forms/Logout";
 import React, { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import Loading from "./components/Loading";
+import EmailVerify from "./components/EmailVerify";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -63,6 +64,11 @@ function App() {
           ) : (
             <Route path="/landingPage" component={LandingPage} />
           )}
+
+          <Route
+            path="/api/auth/:user_id/verify/:token"
+            component={EmailVerify}
+          />
           <Route exact path="/" component={LandingPage} />
         </Switch>
       </div>

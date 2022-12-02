@@ -26,6 +26,7 @@ function LoginForm() {
       axios
         .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
         .then((resp) => {
+          console.log(resp.data);
           localStorage.setItem("token", resp.data.token);
           push("/projectListings");
           window.location.reload();
