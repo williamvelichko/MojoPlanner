@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
-function LoginForm() {
+function LoginForm(props) {
   const { push } = useHistory();
 
   const [userInfo, setUserInfo] = useState({
@@ -27,9 +28,14 @@ function LoginForm() {
         .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
         .then((resp) => {
           console.log(resp.data);
-          localStorage.setItem("token", resp.data.token);
-          push("/projectListings");
-          window.location.reload();
+          console.log(props.verified);
+          if (props.verified === false) {
+            setError(`${resp.data.message}`);
+          } else {
+            localStorage.setItem("token", resp.data.token);
+            push("/projectListings");
+            window.location.reload();
+          }
         })
         .catch((err) => {
           setError("Wrong Username or Password");
@@ -79,8 +85,13 @@ function LoginForm() {
     </MainContainer>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    verified: state.verified,
+  };
+};
 
-export default LoginForm;
+export default connect(mapStateToProps)(LoginForm);
 
 const MainContainer = styled.div`
   display: flex;

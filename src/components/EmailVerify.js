@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-function EmailVerify() {
+import { connect } from "react-redux";
+import { verifyEmail } from "./reducer/actions";
+
+function EmailVerify(props) {
+  console.log(props);
+  const { dispatch } = props;
   const [validUrl, setValidUrl] = useState(false);
   const params = useParams();
   useEffect(() => {
@@ -12,10 +17,14 @@ function EmailVerify() {
 
         const { data } = await axios.get(url);
         console.log(data);
-        setValidUrl(true);
+        //setValidUrl(true);
+        dispatch(verifyEmail(true));
+        console.log(props.verified);
       } catch (error) {
         console.log(error);
-        setValidUrl(false);
+        //setValidUrl(false);
+        dispatch(verifyEmail(true));
+        console.log(props.verified);
       }
     };
     verifyEmailUrl();
@@ -23,7 +32,7 @@ function EmailVerify() {
 
   return (
     <div>
-      {validUrl ? (
+      {props.verified ? (
         <Verified>
           <h1>Email verified successfully</h1>
           <Link to="/login">
@@ -39,7 +48,13 @@ function EmailVerify() {
   );
 }
 
-export default EmailVerify;
+const mapStateToProps = (state) => {
+  return {
+    verified: state.verified,
+  };
+};
+
+export default connect(mapStateToProps)(EmailVerify);
 
 const Verified = styled.div`
   display: flex;

@@ -6,6 +6,7 @@ import {
   ADD_TASK,
   EDIT_TASK,
   DELETE_TASK,
+  VERIFY_EMAIL,
 } from "./actions";
 
 const initialState = {
@@ -27,10 +28,17 @@ const initialState = {
     // },
   ],
   editing: false,
+  verified: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case VERIFY_EMAIL:
+      return {
+        ...state,
+        verified: action.payload,
+      };
+
     case GET_PROJECTS:
       return {
         ...state,
