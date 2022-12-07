@@ -20,16 +20,14 @@ function LoginForm(props) {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log("clicking");
+
     if (userInfo.email === "" || userInfo.password === "") {
       setError("ALL FIELDS ARE REQUIRED");
     } else {
       axios
         .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
         .then((resp) => {
-          console.log(resp.data);
-          console.log(props.verified);
-          if (props.verified === false) {
+          if (resp.data.verified === false) {
             setError(`${resp.data.message}`);
           } else {
             localStorage.setItem("token", resp.data.token);

@@ -29,7 +29,7 @@ function EditTask(props) {
         setTask(res.data[0]);
       });
   }, []);
-  console.log(task);
+
   const handleChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };

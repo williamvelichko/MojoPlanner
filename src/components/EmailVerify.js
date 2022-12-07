@@ -16,15 +16,9 @@ function EmailVerify(props) {
         const url = `https://mojoplanner.herokuapp.com/api/auth/${params.user_id}/verify/${params.token}`;
 
         const { data } = await axios.get(url);
-        console.log(data);
-        //setValidUrl(true);
         dispatch(verifyEmail(true));
-        console.log(props.verified);
       } catch (error) {
-        console.log(error);
-        //setValidUrl(false);
         dispatch(verifyEmail(true));
-        console.log(props.verified);
       }
     };
     verifyEmailUrl();
