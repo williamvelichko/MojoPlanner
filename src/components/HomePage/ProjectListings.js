@@ -13,7 +13,6 @@ function ProjectListings(props) {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     dispatch(getProjects(jwt.subject));
-    //window.location.reload();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -75,8 +74,6 @@ function ProjectListings(props) {
                   </div>
                 </Item2>
               </ProjectSection>
-              // </Link>
-              // </ProjectContainer>
             );
           })
         )}

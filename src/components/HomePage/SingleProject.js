@@ -41,7 +41,7 @@ function SingleProject(props) {
   };
   const deleteTsk = (taskID) => {
     dispatch(deleteTask(taskID));
-    // push(`/singleProject/${params.id}`);
+
     setTimeout(() => {
       window.location.reload();
     }, 500);
@@ -54,7 +54,6 @@ function SingleProject(props) {
       ) : (
         result.map((pr) => {
           return (
-            //<MainContainer>
             <MainContainer key={pr.project_id}>
               <div>
                 <ProjectName>

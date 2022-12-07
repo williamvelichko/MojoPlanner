@@ -6,11 +6,6 @@ import Loading from "../Loading";
 import ClipLoader from "react-spinners/ClipLoader";
 
 function LandingPage() {
-  // const { user, getAccessTokenSilently } = useAuth0();
-  // const token = () => {
-  //   getAccessTokenSilently();
-  // };
-  // console.log(token);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,7 +17,6 @@ function LandingPage() {
 
   return (
     <LandingContainer>
-      {/* {!loading ? <ClipLoader color={"#FFFFFF"} loading={loading} size={150} /> : */}
       <Container1>
         <img
           className="image1"

@@ -16,7 +16,7 @@ export const verifyEmail = (type) => {
 
 export const getProjects = (user_id) => (dispatch) => {
   axios
-    //.get(`https://mojoplanner.herokuapp.com/api/projects/user/${user_id}`)
+
     .get(`https://mojoplanner.herokuapp.com/api/projects/user/${user_id}`)
     .then((res) => {
       dispatch({ type: GET_PROJECTS, payload: res.data });

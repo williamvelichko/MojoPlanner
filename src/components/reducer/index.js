@@ -10,23 +10,7 @@ import {
 } from "./actions";
 
 const initialState = {
-  projects: [
-    // {
-    //   project_name: "Trip1",
-    //   project_leader: "William",
-    //   project_id: 1,
-    //   project_tasks: [
-    //     {
-    //       task_name: "Food",
-    //       info: "We need to figure the situation out who will be cooking",
-    //     },
-    //     {
-    //       task_name: "Games",
-    //       info: "find someone in charge to make games",
-    //     },
-    //   ],
-    // },
-  ],
+  projects: [],
   editing: false,
   verified: false,
 };
