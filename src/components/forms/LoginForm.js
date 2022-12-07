@@ -13,6 +13,7 @@ function LoginForm(props) {
   });
 
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -28,7 +29,7 @@ function LoginForm(props) {
         .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
         .then((resp) => {
           if (resp.data.verified === false) {
-            setError(`${resp.data.message}`);
+            setMessage(`${resp.data.message}`);
           } else {
             localStorage.setItem("token", resp.data.token);
             push("/projectListings");
@@ -36,6 +37,7 @@ function LoginForm(props) {
           }
         })
         .catch((err) => {
+          setMessage("");
           setError("Wrong Username or Password");
         });
     }
@@ -72,6 +74,7 @@ function LoginForm(props) {
         </ButtonDiv>
         <ErrorMessage>
           <p>{error}</p>
+          {message !== "" && <Message>{message}</Message>}
         </ErrorMessage>
         <LinkDiv>
           <Link className="link" to="/Signup">
@@ -205,4 +208,15 @@ const ErrorMessage = styled.div`
     margin: 0;
   }
   margin-bottom: 10px;
+`;
+const Message = styled.p`
+  border: 1px solid green;
+  background-color: green;
+  font-family: fira sans;
+  padding: 10px;
+  color: #ffffff;
+  font-weight: 10;
+  font-size: 1.3rem;
+
+  margin: 0;
 `;
