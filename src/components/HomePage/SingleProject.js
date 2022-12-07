@@ -291,12 +291,13 @@ const Information = styled.div`
         background-color: #ffffff;
         padding: 10px;
         border: 1px solid #e46363;
+        //border: 1px solid black;
       }
       h5 {
         font-weight: bold;
       }
       .taskInfo {
-        height: 15vh;
+        height: 9vh;
         width: 90%;
         overflow-wrap: break-word;
       }

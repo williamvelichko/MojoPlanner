@@ -209,4 +209,7 @@ const Message = styled.p`
   font-size: 1.3rem;
 
   margin: 0;
+  @media (max-width: 420px) {
+    width: 80%;
+  }
 `;
