@@ -1,10 +1,10 @@
 Application for helping users with any personal or organization planning in a simple and easy way!
 <ui>
-<li>-User creates account</li>
--user can add projects that they will be organizing
--user has ability to add as much tasks as they want for each projet they are organizing
--user can delete task for the specific project when task is complete
--user can also edit tasks, edit projects, delte tasks, and delete projects once project finished!
+<li>User creates account</li>
+<li>user can add projects that they will be organizing</li>
+<li>user has ability to add as much tasks as they want for each projet they are organizing</li>
+<li>user can delete task for the specific project when task is complete</li>
+<li>user can also edit tasks, edit projects, delte tasks, and delete projects once project finished!</li>
 <ui>
 
 
