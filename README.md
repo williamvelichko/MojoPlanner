@@ -1,3 +1,17 @@
+Application for helping users with any personal or organization planning in a simple and easy way!
+-User creates account
+-user can add projects that they will be organizing
+-user has ability to add as much tasks as they want for each projet they are organizing
+-user can delete task for the specific project when task is complete
+-user can also edit tasks, edit projects, delte tasks, and delete projects once project finished!
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
