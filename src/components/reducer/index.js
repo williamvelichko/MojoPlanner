@@ -7,6 +7,8 @@ import {
   EDIT_TASK,
   DELETE_TASK,
   VERIFY_EMAIL,
+  TASK_COMPLETE,
+  TASK_COMPLETE_REDO,
 } from "./actions";
 
 const initialState = {
@@ -58,6 +60,16 @@ const reducer = (state = initialState, action) => {
         projects: action.payload,
       };
     case DELETE_TASK:
+      return {
+        ...state,
+        projects: action.payload,
+      };
+    case TASK_COMPLETE:
+      return {
+        ...state,
+        projects: action.payload,
+      };
+    case TASK_COMPLETE_REDO:
       return {
         ...state,
         projects: action.payload,

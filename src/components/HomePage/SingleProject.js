@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { deleteProject, deleteTask } from "../reducer/actions";
+import {
+  deleteProject,
+  deleteTask,
+  taskComplete,
+  taskCompleteRedo,
+} from "../reducer/actions";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import Loading from "../Loading";
-
+import DeleteIcon from "@mui/icons-material/Delete";
 function SingleProject(props) {
   const [result, setResult] = useState([]);
   const [noTasks, SetNoTasks] = useState(false);
@@ -47,6 +52,22 @@ function SingleProject(props) {
     }, 500);
   };
 
+  function finishedTask(id, task_finished) {
+    console.log(id);
+    console.log(task_finished);
+    if (task_finished === false) {
+      dispatch(taskComplete(id));
+      setTimeout(() => {
+        window.location.reload();
+      }, 400);
+    } else {
+      dispatch(taskCompleteRedo(id));
+      setTimeout(() => {
+        window.location.reload();
+      }, 400);
+    }
+  }
+
   return (
     <OverContainer>
       {loading ? (
@@ -82,15 +103,37 @@ function SingleProject(props) {
                 )}
                 {pr.project_tasks.map((tsk) => {
                   return (
-                    <Information key={tsk.task_id}>
-                      <div className="eachTask">
-                        <div className="text">
+                    <Information
+                      key={tsk.task_id}
+                      taskChecked={tsk.task_finished}
+                    >
+                      <div
+                        className={
+                          tsk.task_finished === false ? "eachTask" : "eachTask2"
+                        }
+                      >
+                        <Checkbox>
+                          <input
+                            type="checkbox"
+                            id="checkbox"
+                            className="rounded-checkbox"
+                            checked={tsk.task_finished}
+                            onChange={() =>
+                              finishedTask(tsk.task_id, tsk.task_finished)
+                            }
+                          />
+                        </Checkbox>
+                        <div className="text_title">
                           <h5>Title:</h5>
-                          <h4>{tsk.task_name}</h4>
+                          <div className="underline">
+                            <h4>{tsk.task_name}</h4>
+                          </div>
                         </div>
-                        <div className="text">
+                        <div className="text_task">
                           <h5>Task:</h5>
-                          <h4 className="taskInfo">{tsk.task_information}</h4>
+                          <div className="underline">
+                            <h4 className="taskInfo">{tsk.task_information}</h4>
+                          </div>
                         </div>
                       </div>
                       <div className="taskButtons">
@@ -99,7 +142,16 @@ function SingleProject(props) {
                           to={`/editTask/${pr.project_id}/${tsk.task_id}`}
                         >
                           <p>
-                            Edit Task <EditIcon sx={{ fontSize: "20px" }} />
+                            <EditIcon
+                              sx={{
+                                fontSize: "30px",
+                                "&:hover": {
+                                  color: "black",
+                                  transitionDuration: "0.3",
+                                  fontSize: "33px",
+                                },
+                              }}
+                            />
                           </p>
                         </Link>
                         <button
@@ -107,8 +159,17 @@ function SingleProject(props) {
                           onClick={() => deleteTsk(tsk.task_id)}
                         >
                           <p>
-                            Task Finished{" "}
-                            <CheckCircleOutlineIcon sx={{ fontSize: "20px" }} />
+                            <DeleteIcon
+                              sx={{
+                                fontSize: "30px",
+                                color: "red",
+                                "&:hover": {
+                                  color: "black",
+                                  transitionDuration: "0.3",
+                                  fontSize: "33px",
+                                },
+                              }}
+                            />
                           </p>
                         </button>
                       </div>
@@ -265,111 +326,106 @@ h2{
 const Information = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: #d9d9d9;
+  background-color: ${(props) => (props.taskChecked ? "#adb5bd" : "#ffffff")};
+  border-radius: 10px;
+  justify-content: space-between;
   margin-top: 20px;
   .eachTask {
     display: flex;
-    flex-direction: column;
-    width: 70%;
-    padding: 20px;
-    .text {
-      margin-left: 20px;
-      display: flex;
-      flex-direciton: row;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      h5,
-      h4 {
-        font-family: fira sans;
-        color: #black;
-        font-weight: 50;
-        font-size: 1.1rem;
-        margin: 0;
-      }
-      h4 {
-        width: 90%;
-        background-color: #ffffff;
-        padding: 10px;
-        border: 1px solid #e46363;
-        //border: 1px solid black;
-      }
-      h5 {
-        font-weight: bold;
-      }
-      .taskInfo {
-        height: 9vh;
-        width: 90%;
-        overflow-wrap: break-word;
-      }
-    }
-    @media (max-width: 420px) {
-      padding: 15px;
-      .text {
-        margin: 0;
-
-        .taskInfo {
-          height: 10vh;
-        }
-        h5 {
-          font-size: 1rem;
-        }
-        h4 {
-          font-size: 1rem;
-          margin-left: 5px;
-        }
-      }
-    }
+    flex-direction: row;
+    width: 100%;
+    //justify-content: space-evenly;
   }
-
-  .taskButtons {
-    width: 30%;
+  .text_title,
+  .text_task {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+  }
+  .text_title {
+    width: 30%;
+  }
+  .text_task {
+    width: 100%;
+  }
+  .taskButtons {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    //background-color: #ffffff;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+    border-radius: 10px;
+  }
+  .deleteTask {
+    background-color: ${(props) => (props.taskChecked ? "#adb5bd" : "#ffffff")};
+    border: none;
+    // p {
+    //   :hover {
+    //     box-shadow: 0px 0px 3px 3px grey;
+    //     transition-duration: 0.2s;
+    //   }
+    // }
+  }
+  .underline {
+    display: flex;
+    border-bottom: 2px solid black;
+    padding: 0;
+    margin: 20px 15px 20px 15px;
+    width: 100%;
+  }
+  h4 {
+    margin: 0;
+    padding: 5px;
+    font-family: fira sans;
+    color: #black;
+    font-weight: 50;
+    margin: 0;
+  }
+  h5 {
+    padding: 5px;
+    margin-left: 5px;
+    font-family: fira sans;
+    color: #black;
+    font-weight: 50;
+  }
 
-    .editTask,
-    .deleteTask {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      text-decoration: none;
-      width: 70%;
-      height: 7vh;
-      border: 1px solid transparent;
-      border-radius: 10px 10px 10px;
-      :hover {
-        box-shadow: 0px 0px 3px 3px grey;
-        transition-duration: 0.2s;
-      }
-      p {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 60%;
-        color: #ffffff;
-        font-family: fira sans;
-        font-size: 1.1rem;
-      }
+  .eachTask2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    h4 {
+      text-decoration: line-through;
     }
-    .editTask {
-      background-color: #0b343d;
+  }
+`;
+
+const Checkbox = styled.div`
+  display: flex;
+
+  .rounded-checkbox {
+    margin: auto;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid black;
+    :hover {
+      border: 2px solid black;
     }
-    .deleteTask {
-      background-color: #e46363;
-    }
-    @media (max-width: 420px) {
-      .editTask,
-      .deleteTask {
-        width: 80%;
-        height: 5.5vh;
-        p {
-          width: 90%;
-          font-size: 0.6rem;
-        }
-      }
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .rounded-checkbox:checked {
+    appearance: auto;
+    clip-path: circle(50% at 50% 50%);
+    background-color: black;
+    .eachTask {
+      background-color: black;
     }
   }
 `;
