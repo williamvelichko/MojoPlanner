@@ -9,6 +9,8 @@ export const ADD_TASK = "ADD_TASK";
 export const EDIT_TASK = "EDIT_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const VERIFY_EMAIL = "VERIFY_EMAIL";
+export const TASK_COMPLETE = "TASK_COMPLETE";
+export const TASK_COMPLETE_REDO = "TASK_COMPLETE_REDO";
 
 export const verifyEmail = (type) => {
   return { type: VERIFY_EMAIL, payload: type };
@@ -85,6 +87,24 @@ export const deleteTask = (task_id) => (dispatch) => {
     });
 };
 
+export const taskComplete = (task_id) => (dispatch) => {
+  axios
+    .put(
+      `https://mojoplanner.herokuapp.com/api/projects/taskComplete/${task_id}`
+    )
+    .then((res) => {
+      dispatch({ type: TASK_COMPLETE, payload: task_id });
+    });
+};
+export const taskCompleteRedo = (task_id) => (dispatch) => {
+  axios
+    .put(
+      `https://mojoplanner.herokuapp.com/api/projects/taskCompleteRedo/${task_id}`
+    )
+    .then((res) => {
+      dispatch({ type: TASK_COMPLETE_REDO, payload: task_id });
+    });
+};
 // export const getProjects = (project_id) => (dispatch) => {
 //   axios.get(`http://localhost:4000/api/projects/${project_id}`).then((res) => {
 //     dispatch({ type: GET_SINGLE_PROJECT, payload: res.data });
