@@ -198,7 +198,6 @@ const ErrorMessage = styled.div`
   justify-content: center;
   align-content: center;
   width: 60%;
-
   p {
     padding: 0;
     font-family: fira sans;
@@ -212,7 +211,6 @@ const Message = styled.p`
   width: 100%;
   display: flex;
   justify-content: center;
-
   p {
     background-color: #90e0ef;
     padding: 12px;

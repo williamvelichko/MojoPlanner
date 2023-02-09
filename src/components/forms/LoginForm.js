@@ -210,7 +210,6 @@ const ErrorMessage = styled.div`
   justify-content: center;
   align-content: center;
   width: 60%;
-
   p {
     padding: 0;
     font-family: fira sans;
