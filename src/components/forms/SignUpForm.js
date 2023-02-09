@@ -27,6 +27,7 @@ function SignUpForm() {
       axios
         .post("https://mojoplanner.herokuapp.com/api/auth/register", userInfo)
         .then((resp) => {
+          setError("");
           setMessage(resp.data);
         })
         .catch((err) => {
@@ -58,6 +59,11 @@ function SignUpForm() {
             value={userInfo.password}
             onChange={handleChange}
           />
+          {error !== "" && (
+            <ErrorMessage>
+              <p>{error}</p>
+            </ErrorMessage>
+          )}
         </Fields>
 
         <ButtonDiv>
@@ -65,10 +71,12 @@ function SignUpForm() {
             <h3>Create Account!</h3>
           </button>
         </ButtonDiv>
-        <ErrorMessage>
-          <p>{error}</p>
-          {message !== "" && <Message>{message}</Message>}
-        </ErrorMessage>
+
+        {message !== "" && (
+          <Message>
+            <p>{message}</p>
+          </Message>
+        )}
 
         <LinkDiv>
           <Link className="link" to="/Login">
@@ -188,27 +196,33 @@ const ErrorMessage = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-content: center;
+  width: 60%;
+
   p {
+    padding: 0;
     font-family: fira sans;
     color: #90e0ef;
-    font-weight: 10;
-    font-size: 1.3rem;
-
+    font-size: 1rem;
     margin: 0;
   }
-  margin-bottom: 10px;
 `;
 
 const Message = styled.p`
-  border: 1px solid green;
-  background-color: green;
-  font-family: fira sans;
-  padding: 10px;
-  color: #ffffff;
-  font-weight: 10;
-  font-size: 1.3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
-  margin: 0;
+  p {
+    background-color: #90e0ef;
+    padding: 12px;
+    font-family: fira sans;
+    color: black;
+    font-weight: 10;
+    font-size: 1rem;
+    margin: 0;
+  }
+  margin-bottom: 10px;
   @media (max-width: 420px) {
     width: 80%;
   }

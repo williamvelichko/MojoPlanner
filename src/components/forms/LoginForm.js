@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 
 function LoginForm(props) {
   const { push } = useHistory();
@@ -29,6 +30,7 @@ function LoginForm(props) {
         .post("https://mojoplanner.herokuapp.com/api/auth/login", userInfo)
         .then((resp) => {
           if (resp.data.verified === false) {
+            setError("");
             setMessage(`${resp.data.message}`);
           } else {
             localStorage.setItem("token", resp.data.token);
@@ -65,6 +67,11 @@ function LoginForm(props) {
             value={userInfo.password}
             onChange={handleChange}
           />
+          {error !== "" && (
+            <ErrorMessage>
+              <p>{error}</p>
+            </ErrorMessage>
+          )}
         </Fields>
 
         <ButtonDiv>
@@ -72,10 +79,12 @@ function LoginForm(props) {
             <h3>Login</h3>
           </button>
         </ButtonDiv>
-        <ErrorMessage>
-          <p>{error}</p>
-          {message !== "" && <Message>{message}</Message>}
-        </ErrorMessage>
+        {message !== "" && (
+          <Message>
+            <p>{message}</p>
+          </Message>
+        )}
+
         <LinkDiv>
           <Link className="link" to="/Signup">
             <h3>Don't have an account?</h3>
@@ -199,26 +208,32 @@ const ErrorMessage = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-content: center;
+  width: 60%;
+
   p {
+    padding: 0;
     font-family: fira sans;
     color: #90e0ef;
-    font-weight: 10;
-    font-size: 1.3rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+`;
+const Message = styled.p`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
+  p {
+    background-color: #90e0ef;
+    padding: 12px;
+    font-family: fira sans;
+    color: black;
+    font-weight: 10;
+    font-size: 1rem;
     margin: 0;
   }
   margin-bottom: 10px;
-`;
-const Message = styled.p`
-  border: 1px solid green;
-  background-color: green;
-  font-family: fira sans;
-  padding: 10px;
-  color: #ffffff;
-  font-weight: 10;
-  font-size: 1.3rem;
-
-  margin: 0;
   @media (max-width: 420px) {
     width: 80%;
   }
