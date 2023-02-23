@@ -200,10 +200,9 @@ const ProjectSection = styled.div`
   //background-color: #d9d9d9;
   border-radius: 5px;
   margin-bottom: 30px;
-
-  // :hover {
-  //   background-color: grey;
-  // }
+  @media (max-width: 420px) {
+    flex-direction: column;
+  }
 `;
 
 const Item1 = styled.div`
@@ -230,8 +229,24 @@ const Item1 = styled.div`
     width: 100%;
   }
   @media (max-width: 420px) {
+    width: 100%;
+    flex-direction: row;
+    h3 {
+      margin: 0;
+    }
     h4 {
       font-size: 1.1rem;
+      margin: 0;
+      border-bottom: 2px solid white;
+    }
+
+    .part1 {
+      width: 20%;
+      padding: 5px;
+    }
+    .part2 {
+      width: 70%;
+      padding: 5px;
     }
   }
 `;
@@ -318,6 +333,7 @@ const Item2 = styled.div`
     }
   }
   @media (max-width: 420px) {
+    width: 100%;
     h4 {
       font-size: 1.1rem;
     }
