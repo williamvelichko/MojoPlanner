@@ -123,16 +123,20 @@ function SingleProject(props) {
                             }
                           />
                         </Checkbox>
-                        <div className="text_title">
-                          <h5>Title:</h5>
-                          <div className="underline">
-                            <h4>{tsk.task_name}</h4>
+                        <div className="task_info">
+                          <div className="text_title">
+                            <h5>Title:</h5>
+                            <div className="underline">
+                              <h4 className="task_name">{tsk.task_name}</h4>
+                            </div>
                           </div>
-                        </div>
-                        <div className="text_task">
-                          <h5>Task:</h5>
-                          <div className="underline">
-                            <h4 className="taskInfo">{tsk.task_information}</h4>
+                          <div className="text_task">
+                            <h5>Task:</h5>
+                            <div className="underline">
+                              <h4 className="taskInfo">
+                                {tsk.task_information}
+                              </h4>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -334,7 +338,6 @@ const Information = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    //justify-content: space-evenly;
   }
   .text_title,
   .text_task {
@@ -351,7 +354,6 @@ const Information = styled.div`
     display: flex;
     flex-direction: row;
     width: 20%;
-    //background-color: #ffffff;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
@@ -360,12 +362,6 @@ const Information = styled.div`
   .deleteTask {
     background-color: ${(props) => (props.taskChecked ? "#adb5bd" : "#ffffff")};
     border: none;
-    // p {
-    //   :hover {
-    //     box-shadow: 0px 0px 3px 3px grey;
-    //     transition-duration: 0.2s;
-    //   }
-    // }
   }
   .underline {
     display: flex;
@@ -396,6 +392,54 @@ const Information = styled.div`
     width: 100%;
     h4 {
       text-decoration: line-through;
+    }
+  }
+  .task_info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  @media (max-width: 420px) {
+    flex-direction: column;
+    .task_info {
+      flex-direction: column;
+    }
+
+    .text_title {
+      width: 100%;
+      h5 {
+        margin: 5px;
+        font-size: 0.8rem;
+      }
+      h4 {
+        font-size: 0.8rem;
+      }
+      padding: 0;
+      .underline {
+        margin: 5px;
+      }
+    }
+    .text_task {
+      h5 {
+        font-size: 0.8rem;
+      }
+      h4 {
+        font-size: 0.8rem;
+      }
+      width: 100%;
+      .underline {
+        margin: 10px 5px 10px 5px;
+      }
+    }
+
+    .taskButtons {
+      display: flex;
+      width: 100%;
+      .editTask {
+        p {
+          margin: 0;
+        }
+      }
     }
   }
 `;
