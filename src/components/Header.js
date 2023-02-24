@@ -140,12 +140,25 @@ const NavBar = styled.div`
   }
 
   @media (max-width: 420px) {
-    width: 50%;
+    margin-right: 10px;
+    justify-content: space-between;
+    width: 45%;
     .link1 {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
     .link2 {
-      font-size: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+  @media (max-width: 370px) {
+    margin-right: 10px;
+    justify-content: space-between;
+    width: 45%;
+    .link1 {
+      font-size: 0.8rem;
+    }
+    .link2 {
+      font-size: 0.8rem;
     }
   }
 `;
