@@ -405,27 +405,36 @@ const Information = styled.div`
     .task_info {
       flex-direction: column;
     }
-    .underline {
-      margin: 10px 5px 10px 5px;
-    }
+
     .text_title {
       width: 100%;
-      padding: 0;
+      h5 {
+        margin: 5px;
+        font-size: 0.8rem;
+      }
       h4 {
-        padding: 0;
-        margin: 0;
+        font-size: 0.8rem;
+      }
+      padding: 0;
+      .underline {
+        margin: 5px;
       }
     }
     .text_task {
+      h5 {
+        font-size: 0.8rem;
+      }
+      h4 {
+        font-size: 0.8rem;
+      }
       width: 100%;
+      .underline {
+        margin: 10px 5px 10px 5px;
+      }
     }
 
     .taskButtons {
       width: 100%;
-      padding: 0;
-    }
-    .editTask {
-      margin: 0;
     }
   }
 `;
