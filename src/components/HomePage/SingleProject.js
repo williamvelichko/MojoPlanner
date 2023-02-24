@@ -123,16 +123,20 @@ function SingleProject(props) {
                             }
                           />
                         </Checkbox>
-                        <div className="text_title">
-                          <h5>Title:</h5>
-                          <div className="underline">
-                            <h4>{tsk.task_name}</h4>
+                        <div className="task_info">
+                          <div className="text_title">
+                            <h5>Title:</h5>
+                            <div className="underline">
+                              <h4 className="task_name">{tsk.task_name}</h4>
+                            </div>
                           </div>
-                        </div>
-                        <div className="text_task">
-                          <h5>Task:</h5>
-                          <div className="underline">
-                            <h4 className="taskInfo">{tsk.task_information}</h4>
+                          <div className="text_task">
+                            <h5>Task:</h5>
+                            <div className="underline">
+                              <h4 className="taskInfo">
+                                {tsk.task_information}
+                              </h4>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -334,7 +338,6 @@ const Information = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    //justify-content: space-evenly;
   }
   .text_title,
   .text_task {
@@ -360,12 +363,6 @@ const Information = styled.div`
   .deleteTask {
     background-color: ${(props) => (props.taskChecked ? "#adb5bd" : "#ffffff")};
     border: none;
-    // p {
-    //   :hover {
-    //     box-shadow: 0px 0px 3px 3px grey;
-    //     transition-duration: 0.2s;
-    //   }
-    // }
   }
   .underline {
     display: flex;
@@ -396,6 +393,39 @@ const Information = styled.div`
     width: 100%;
     h4 {
       text-decoration: line-through;
+    }
+  }
+  .task_info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  @media (max-width: 420px) {
+    flex-direction: column;
+    .task_info {
+      flex-direction: column;
+    }
+    .underline {
+      margin: 10px 5px 10px 5px;
+    }
+    .text_title {
+      width: 100%;
+      padding: 0;
+      h4 {
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .text_task {
+      width: 100%;
+    }
+
+    .taskButtons {
+      width: 100%;
+      padding: 0;
+    }
+    .editTask {
+      margin: 0;
     }
   }
 `;
