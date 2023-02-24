@@ -271,7 +271,6 @@ const Item2 = styled.div`
     font-weight: bold;
     width: 70%;
     margin: 0px 0px 20px 0px;
-    //margin-bottom: 10px;
     display: flex;
     justify-content: center;
   }
@@ -324,7 +323,6 @@ const Item2 = styled.div`
     @media (max-width: 420px) {
       .link {
         padding: 0;
-        //margin: 0px 10px 0px 10px;
         p {
           font-size: 0.5rem;
           margin: 0;
@@ -334,8 +332,18 @@ const Item2 = styled.div`
   }
   @media (max-width: 420px) {
     width: 100%;
+    .part1 {
+      padding: 10px 10px 5px 10px;
+    }
+    .part2 {
+      padding: 5px 10px 10px 10px;
+    }
+    h3 {
+      margin: 0;
+    }
     h4 {
       font-size: 1.1rem;
+      margin: 0;
     }
   }
 `;
