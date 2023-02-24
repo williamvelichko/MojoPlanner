@@ -354,7 +354,6 @@ const Information = styled.div`
     display: flex;
     flex-direction: row;
     width: 20%;
-    //background-color: #ffffff;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
@@ -434,7 +433,13 @@ const Information = styled.div`
     }
 
     .taskButtons {
+      display: flex;
       width: 100%;
+      .editTask {
+        p {
+          margin: 0;
+        }
+      }
     }
   }
 `;
