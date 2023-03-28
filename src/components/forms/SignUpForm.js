@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import {
   MainContainer,
@@ -12,8 +12,6 @@ import {
 } from "./formsCSS/SignUpFormCSS";
 
 function SignUpForm() {
-  const { push } = useHistory();
-
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",

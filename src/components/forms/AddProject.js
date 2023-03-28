@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
 import { addProject } from "../reducer/actions";
-import { useParams } from "react-router-dom";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import jwtDecode from "jwt-decode";
 import { MainContainer, Form, Button } from "./formsCSS/AddProjectCSS";
 
 function AddProject(props) {
   const { push } = useHistory();
-  const params = useParams();
-  const { dispatch, editing } = props;
+  const { dispatch } = props;
 
   const jwt = jwtDecode(localStorage.getItem("token"));
 

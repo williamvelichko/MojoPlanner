@@ -26,8 +26,7 @@ import {
 
 function SingleProject(props) {
   const [result, setResult] = useState([]);
-  const [noTasks, SetNoTasks] = useState(false);
-  const { projects, dispatch, location } = props;
+  const { dispatch } = props;
   const params = useParams();
   const { push } = useHistory();
 

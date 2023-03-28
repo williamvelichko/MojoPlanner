@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
-import { addProject } from "../reducer/actions";
 import { useParams } from "react-router-dom";
 import { updateProject } from "../reducer/actions";
 import EditIcon from "@mui/icons-material/Edit";
@@ -10,7 +9,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { MainContainer, Form, Button } from "./formsCSS/EditProjectCSS";
 
 function EditProject(props) {
-  const { projects, dispatch } = props;
+  const { dispatch } = props;
 
   const { push } = useHistory();
   const params = useParams();
@@ -83,7 +82,6 @@ function EditProject(props) {
           </button>
         </Button>
       </Form>
-      {/* <p>{error}</p> */}
     </MainContainer>
   );
 }

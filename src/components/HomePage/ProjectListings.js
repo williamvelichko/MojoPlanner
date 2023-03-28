@@ -27,8 +27,6 @@ function ProjectListings(props) {
     }, 400);
   }, []);
 
-  const [emptyArray, SetEmptyArray] = useState(false);
-
   return (
     <ListingContainer>
       <Bar>

@@ -29,7 +29,6 @@ function LoginForm(props) {
 
   const submit = (e) => {
     e.preventDefault();
-
     if (userInfo.email === "" || userInfo.password === "") {
       setError("ALL FIELDS ARE REQUIRED");
     } else {
