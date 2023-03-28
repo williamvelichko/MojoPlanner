@@ -1,8 +1,5 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
-import LandingPage from "./landingPage/LandingPage";
-import Loading from "./Loading";
+import { Redirect, Route } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
 function ProtectedRoute(props) {
@@ -20,7 +17,6 @@ function ProtectedRoute(props) {
 
   return (
     <Route
-      // {...rest}
       render={() => {
         if (localStorage.getItem("token") && verifyToken() === true) {
           return <Route {...props} />;
