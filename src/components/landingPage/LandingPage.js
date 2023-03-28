@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import image from "../../images/webDevelopmentBackground.ed90dd85.png";
-import { useAuth0 } from "@auth0/auth0-react";
-import Loading from "../Loading";
-import ClipLoader from "react-spinners/ClipLoader";
 import { LandingContainer, Container1, Container2 } from "./LandingPageCSS";
 
 function LandingPage() {
