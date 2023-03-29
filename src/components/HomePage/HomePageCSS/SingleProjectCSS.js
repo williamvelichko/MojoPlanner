@@ -21,6 +21,7 @@ flex-direction: row;
 width: 100%
 justify-content: space-between;
 align-items: center;
+border-bottom: 3px solid #FFFFFF;
 .names {
   display: flex;
   flex-direction: row;
@@ -42,7 +43,7 @@ align-items: center;
       font-weight: 40;
       font-family: fira sans;
       color: #FFFFFF;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin-left: 20px;
     }
   }

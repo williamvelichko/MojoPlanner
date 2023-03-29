@@ -86,10 +86,10 @@ function SingleProject(props) {
                 <ProjectName>
                   <div className="names">
                     <div className="titles">
-                      <h3>Project-Name:</h3> <h2>{pr.project_name}</h2>
+                      <h3>ProjectName:</h3> <h2>{pr.project_name}</h2>
                     </div>
                     <div className="titles">
-                      <h3>Project-Leader:</h3> <h2>{pr.project_leader}</h2>
+                      <h3>ProjectLeader:</h3> <h2>{pr.project_leader}</h2>
                     </div>
                   </div>
 

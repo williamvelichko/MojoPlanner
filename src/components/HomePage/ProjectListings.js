@@ -61,7 +61,7 @@ function ProjectListings(props) {
 
                 <Item2>
                   <div className="part1">
-                    <h3>Project-Leader:</h3>
+                    <h3>ProjectLeader:</h3>
                     <div className="tskAmount">
                       <p>Tasks:</p>
                       <p>{pr.project_tasks.length}</p>
