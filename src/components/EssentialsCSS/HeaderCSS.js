@@ -44,9 +44,6 @@ export const NavBar = styled.div`
     background-color: #244f58;
     border: 1px solid #244f58;
   }
-  // button:hover {
-  //   background-color: #f1f5f9;
-  // }
   .link1 {
     text-decoration: none;
     font-size: 1.4rem;
