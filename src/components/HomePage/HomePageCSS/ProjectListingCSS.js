@@ -109,7 +109,6 @@ export const ProjectSection = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  //background-color: #d9d9d9;
   border-radius: 5px;
   margin-bottom: 30px;
   @media (max-width: 420px) {
@@ -120,8 +119,6 @@ export const ProjectSection = styled.div`
 export const Item1 = styled.div`
   display: flex;
   flex-direction: column;
-  //justify-content: space-between;
-  //align-items: center;
   width: 40%;
   background-color: #739eb0;
   h3 {
