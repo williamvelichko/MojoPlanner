@@ -41,8 +41,8 @@ function Footer() {
         <h3>Hi I'm William Velichko</h3>
         <em>
           <p>
-            Full Stack Web Developer who is passionate about impacting people
-            lifes threw the technology industry
+            Full Stack Web Developer who is passionate about impacting people’s
+            lives through the technology industry.
           </p>
         </em>
         <div className="socials">
