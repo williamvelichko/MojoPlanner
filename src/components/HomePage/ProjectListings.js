@@ -20,13 +20,16 @@ function ProjectListings(props) {
   const jwt = jwtDecode(localStorage.getItem("token"));
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    dispatch(getProjects(jwt.subject));
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 400);
-  }, []);
-
+    dispatch(getProjects(jwt.subject))
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false); // Ensure to turn off loading in case of error
+        console.log(error);
+      });
+  }, [dispatch, jwt.subject]);
   return (
     <ListingContainer>
       <Bar>

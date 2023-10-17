@@ -16,13 +16,20 @@ export const verifyEmail = (type) => {
   return { type: VERIFY_EMAIL, payload: type };
 };
 
-export const getProjects = (user_id) => (dispatch) => {
-  axios
-
-    .get(`https://mojoplanner.herokuapp.com/api/projects/user/${user_id}`)
-    .then((res) => {
-      dispatch({ type: GET_PROJECTS, payload: res.data });
-    });
+export const getProjects = (user_id) => {
+  return (dispatch) => {
+    return axios
+      .get(`https://mojoplanner.herokuapp.com/api/projects/user/${user_id}`)
+      .then((res) => {
+        dispatch({ type: GET_PROJECTS, payload: res.data });
+        return res.data; // Return the data to the caller
+      })
+      .catch((error) => {
+        // Handle error appropriately
+        console.log(error);
+        throw error; // Rethrow the error to the caller
+      });
+  };
 };
 
 export const addProject = (project, user_id) => (dispatch) => {
